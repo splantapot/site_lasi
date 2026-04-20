@@ -3,6 +3,7 @@
 ## Árvore de arquivos
 
 | assets\       --- imagens
+|--- membros\   
 | 
 | css\          --- estilos
 | 

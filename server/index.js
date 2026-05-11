@@ -1,7 +1,7 @@
 import axios from "axios";
 import render_site from "./render.js";
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw8OR3e50GVCQ_tgu843cFUoSsDHUH8tedLFkNydR64PcQDec0pJZH_HK5kYpN0WULG/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzGfTkQ6xI-aSQUAGB-FHIMmX1eeppPT9UaMBmHTFbTskgsN_xDotDm30HRR0rxp54/exec";
 const TIMEOUT = 10000; // 10 seconds
 let data = [];
 
@@ -14,5 +14,5 @@ await axios.get(WEB_APP_URL, {timeout: TIMEOUT})
 });
 
 if (data) {
-    render_site(data);
+    await render_site(data);
 }

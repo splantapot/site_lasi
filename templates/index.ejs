@@ -19,7 +19,8 @@
     <div>
         <% membros.forEach(m => { %>
             <h4><%= m.nome %></h4>
-            <label>Função: <%= m.funcao %></label><br>
+            <label>Função: <%= m.cargo %></label><br>
+            <img src="./images/membros/<%= m.nome %>.jpg" alt="<%= m.nome %>" width="100"><br>
         <% }) %>
     </div>
 </body>

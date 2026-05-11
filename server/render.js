@@ -5,17 +5,23 @@ import path from 'path';
 import Membros from './classes/Membros.js';
 import Eventos from './classes/Eventos.js';
 import { url } from 'inspector';
+import axios from 'axios';
 
 async function download_img(output_path, url) {
-
+    try {
+        const response = await axios.get(url, {responseType: 'arraybuffer'});
+        fs.writeFileSync(output_path, Buffer.from(response.data));
+    } catch(error) {
+        console.error(`Error downloading image from ${url}:\n`, error);
+    }
 }
 
-function render_site(data) {
-    const membros = Membros.from_rows(data.membros);
-    const eventos = Eventos.from_rows(data.eventos);
-    // console.log(membros);
-    // console.log(eventos);
+async function render_site(data) {
+    console.log('Starting rendering site...');
 
+    const membros = Membros.from_rows(data.membros);
+    const eventos = Eventos.filter_exibition(Eventos.from_rows(data.eventos));
+    
     const template_path = path.join(process.cwd(), 'templates', 'index.ejs');
     const output_path = path.join(process.cwd(), 'public', 'index.html');
 
@@ -29,7 +35,7 @@ function render_site(data) {
     }
     for (const membro of membros) {
         if (membro.url_imagem) {
-            console.log(membro.url_imagem)
+            await download_img(path.join(membros_path, `${membro.nome}.jpg`), membro.url_imagem)
         }
     }
 

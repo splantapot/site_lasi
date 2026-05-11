@@ -5,7 +5,7 @@ class Membros extends Generic {
         super();
         this.nome = row[0] || '';
         this.cargo = row[1] || '';
-        this.imagem = row[2] || '';
+        this.url_imagem = row[2] || '';
     }
 }
 

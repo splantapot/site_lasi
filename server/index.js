@@ -5,6 +5,8 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzGfTkQ6xI-aSQUAGB-
 const TIMEOUT = 10000; // 10 seconds
 let data = [];
 
+const x = 1000;
+
 await axios.get(WEB_APP_URL, {timeout: TIMEOUT})
   .then((response) => {
     data = response.data;

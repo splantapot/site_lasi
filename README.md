@@ -1,23 +1,33 @@
-# Site da LASI
+# 🚀 SITE_LASI
 
-Este repositório contém a estrutura de arquivos e diretórios do projeto **SITE_LASI**. A organização segue padrões de desenvolvimento web para facilitar a manutenção e escalabilidade.
+Sistema de gerenciamento e publicação automatizada de conteúdo web integrado ao ecossistema Google Workspace. O projeto utiliza o Google Sheets como um Sistema de Gerenciamento de Conteúdo (CMS) simplificado, disparando pipelines de compilação e renderização estática por meio de uma API Node.js dedicada. (Mudar, feito por IA par agilizar)
 
-## 📁 Estrutura do Projeto
+---
+
+## 🌳 Estrutura do Projeto
 
 ```text
 SITE_LASI/
-├── assets/
-│   ├── img/
-│   │   └── membros/        # Fotos da equipe e colaboradores
-├── css/
-│   └── global.css          # Estilização geral do site
-├── js/
-│   └── main.js             # Scripts e interatividade
-├── pages/
-│   ├── cronograma.html     # Página de cronograma de atividades
-│   ├── membros.html        # Lista de membros do laboratório
-│   └── tccs.html           # Seção dedicada a trabalhos de conclusão
-├── .gitattributes          # Configurações do Git
-├── index.html              # Página principal (Landing Page)
-├── README.md               # Documentação do projeto
-└── docs/                   # Documentos de design e protótipos (Opcional)
+├── api/
+│   ├── .clasp.json
+│   ├── appsscript.json
+│   └── main.js
+├── dev/
+├── node_modules/
+├── public/
+│   ├── images/
+│   └── index.html
+├── server/
+│   ├── classes/
+│   │   ├── Eventos.js
+│   │   ├── Generic.js
+│   │   └── Membros.js
+│   ├── index.js
+│   └── render.js
+├── templates/
+│   └── index.ejs
+├── .gitattributes
+├── .gitignore
+├── package-lock.json
+├── package.json
+└── README.md

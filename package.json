@@ -1,0 +1,16 @@
+{
+  "name": "teste_site_lasi",
+  "version": "1.0.0",
+  "description": "Testing the development of the LASI's site using Netlify to build a static website, while the AppScript is used to get the data from Google sheets.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "author": "Splantapot",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.16.0",
+    "ejs": "^5.0.2"
+  }
+}

@@ -8,7 +8,7 @@ import path from 'path';
  * @returns {string} The full path for the template file.
  */
 function get_template_path(filename) {
-    return path.join(process.cwd(), 'server', 'templates', filename);
+    return path.join(process.cwd(), 'client', 'templates', filename);
 }
 
 /**
@@ -22,7 +22,7 @@ function get_template(filename) {
  * Copies a "src" folder to "public".
  */
 function copy_to_public(folder) {
-    const src_path = path.join(process.cwd(), 'server', folder);
+    const src_path = path.join(process.cwd(), 'client', folder);
     const dest_path = path.join(process.cwd(), 'public', folder);
 
     if (fs.existsSync(src_path)) {

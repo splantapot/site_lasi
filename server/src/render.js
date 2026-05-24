@@ -7,7 +7,13 @@ import axios from 'axios';
 /* My modules */
 import Membros from './classes/Membros.js';
 import Eventos from './classes/Eventos.js';
-import { get_public_path, get_template } from './path_util.js';
+import { get_public_path, get_template, delete_public, copy_to_public } from './path_util.js';
+
+function init_public() {
+    delete_public();            // Clear the "public" directory before rendering the site.
+    copy_to_public('css');      // Copy the "server/css" directory to "public/css".
+    copy_to_public('js');       // Copy the "server/js" directory to "public/js".
+}
 
 /**
  * Downloads an image from a URL and saves it to a local path.
@@ -28,8 +34,9 @@ async function download_img(output_path, url) {
  * It processes the data, downloads member images, and renders the HTML using EJS templates.
  * @param {Object} data - The data fetched from Google Sheets, containing members and events information.
  */
-async function render_full_site(data) {
+async function render_site(data) {
     console.log('Starting rendering site...');
+    init_public();
 
     // Process data ======================================================
     const membros = Membros.from_rows(data.membros);
@@ -45,6 +52,7 @@ async function render_full_site(data) {
     }
 
     // Render site =======================================================
+    // We need do all the templates correctly.
     const template = get_template('index.ejs');
     const html = ejs.render(template, { membros, eventos });
 
@@ -54,4 +62,16 @@ async function render_full_site(data) {
     console.log('Site rendered successfully!');
 }
 
-export { render_full_site };
+async function render_site_for_dev() {
+    console.log('Starting rendering development site...');
+    init_public();
+    
+    const index_temp = get_template('index.ejs');
+    const index_html = ejs.render(index_temp, { membros: [], eventos: [] });
+    const output_path = get_public_path('index.html');
+    fs.writeFileSync(output_path, index_html);
+
+    console.log('Development site rendered successfully!');
+}
+
+export { render_site, render_site_for_dev };

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { render_full_site } from "./src/render.js";
+import { render_site } from "./src/render.js";
 
 /* Settings */
 process.loadEnvFile('./.env');
@@ -21,7 +21,7 @@ await axios.get(WEB_APP_URL, {timeout: TIMEOUT})
 
 /* If data was fetched successfully */
 if (data) {
-    await render_full_site(data);
+    await render_site(data);
 } else {
     console.error("It is not possible to render the site without the Google Sheets data.");
 }

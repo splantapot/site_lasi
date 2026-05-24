@@ -1,6 +1,6 @@
-# 🚀 SITE_LASI
+# Site da LASI
 
-Sistema de gerenciamento e publicação automatizada de conteúdo web integrado ao ecossistema Google Workspace. O projeto utiliza o Google Sheets como um Sistema de Gerenciamento de Conteúdo (CMS) simplificado, disparando pipelines de compilação e renderização estática por meio de uma API Node.js dedicada. (Mudar, feito por IA par agilizar)
+Este repositório documenta e registra o código fonte do site da Liga Acadêmica de Sistemas Inteligentes (LASI) da Universidade Federal do Piauí (UFPI).
 
 ---
 

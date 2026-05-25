@@ -25,12 +25,12 @@
     /* --- TYPOGRAPHY & TEXT --- */
     --text-color:       #f0f6fc; /* Off-white para textos em fundo escuro */
     --text-muted:       #b1b5c9; /* Antigo azul-cinza-fraco (perfeito para subtítulos) */
+    --text-muted-hvr:   #d8dcf3; /* for hover */
     --text-dark:      #1F242C; /* Cor base para textos escuros em elementos claros */
 
     /* --- BRAND COLORS (Base) --- */
     --brand-blue:       #04044c; /* Seu azul-escuro principal */
     --brand-yellow:     #fccc06; /* Seu amarelo principal */
-    
     --blue-slate:       #5b6ba3; /* Antigo azul-cinza */
     --yellow-light:     #fde47b; /* Antigo amarelo-fraco */
 
@@ -39,6 +39,7 @@
     --neutral-light:  #E9ECEF; /* Cinza Claro: Fundo neutro, cards ou divisores */
     --dark-bg:         #24292e; /* Fundo Escuro: Para áreas de destaque ou rodapés */
     --accent-yellow:     #ffc400; /* Amarelo de Destaque: Para ícones, badges ou hover */
+    --black: #000000;
 
     /* --- CORES DE ACENTO VIBRANTES (Ações, Botões & Status) --- */
     --blue-electric:  #1A73E8; /* Azul Elétrico: Links ou botões primários */
@@ -61,17 +62,14 @@
 }
 
 body {
+    background-color: var(--black);
     color: var(--text-color);
     min-height: 100vh;
 }
 
 main {
-    min-height: calc(100vh - 64px); 
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    min-height: 100vh;
 
-    background: #161B22;
-    background: linear-gradient(180deg, rgba(22, 27, 34, 1) 0%, rgba(21, 26, 33, 1) 5%, rgba(20, 25, 32, 1) 10%, rgba(19, 24, 31, 1) 15%, rgba(17, 22, 28, 1) 20%, rgba(16, 21, 27, 1) 25%, rgba(15, 20, 26, 1) 30%, rgba(14, 19, 25, 1) 35%, rgba(14, 18, 24, 1) 40%, rgba(14, 18, 24, 1) 45%, rgba(13, 17, 23, 1) 50%, rgba(12, 16, 22, 1) 55%, rgba(11, 15, 21, 1) 60%, rgba(10, 14, 20, 1) 65%, rgba(9, 12, 18, 1) 70%, rgba(8, 11, 17, 1) 75%, rgba(7, 10, 16, 1) 80%, rgba(6, 9, 14, 1) 85%, rgba(5, 8, 13, 1) 90%, rgba(3, 6, 11, 1) 95%, rgba(1, 4, 9, 1) 100%);
+    background: #24292E;
+    background: linear-gradient(180deg, rgba(36, 41, 46, 1) 0%, rgba(32, 37, 42, 1) 10%, rgba(29, 33, 38, 1) 20%, rgba(25, 30, 34, 1) 30%, rgba(21, 26, 30, 1) 40%, rgba(18, 22, 26, 1) 50%, rgba(14, 18, 22, 1) 60%, rgba(11, 15, 18, 1) 70%, rgba(7, 11, 14, 1) 80%, rgba(4, 7, 10, 1) 90%, rgba(1, 4, 9, 1) 100%);
 }

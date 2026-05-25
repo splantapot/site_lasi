@@ -7,7 +7,7 @@ navigation-bar {
 /* header main div */
 .site-header {
     background-color: var(--dark-bg);
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-muted);
     padding: 10px 12px;
     font-family: var(--font-montserrat);
     border-bottom: 3px solid var(--brand-yellow);
@@ -24,12 +24,12 @@ navigation-bar {
 }
 
 .header-branding {
-    position: relative; /* Vira a referência para o posicionamento do título */
-    display: inline-flex; /* Ajusta o tamanho do container exatamente ao tamanho da imagem */
+    position: relative; /* Useful to title */
+    display: inline-flex;
     align-items: center;
 }
 
-/* Estilo da sua logo image */
+/* logo */
 .header-branding img {
     height: 50px;
     width: auto;
@@ -37,9 +37,9 @@ navigation-bar {
     opacity: 0.70;
 }
 
-/* O Segredo da Sobreposição */
+/* title */
 .header-title {
-    position: absolute;
+    position: absolute; /*enables title overlay*/
     
     left: 50%;
     top: 50%;
@@ -68,14 +68,13 @@ navigation-bar {
     height: 40px;
 }
 
-/* Barra de navegação com itens igualmente espaçados */
-.navigation-bar {
+/* Links from navigation */
+.navigation-links {
     display: flex;
     align-items: center;
-    gap: 40px; /* Cria um espaçamento idêntico e dinâmico entre cada link */
+    gap: 40px; /*itens spacing*/
 }
 
-/* Links estilo GitHub */
 .nav-link {
     color: var(--text-muted);
     font-size: var(--text-base);
@@ -83,7 +82,6 @@ navigation-bar {
     transition: color 0.2s ease;
 }
 
-/* Efeito de hover suave */
 .nav-link:hover {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-muted-hvr);
 }

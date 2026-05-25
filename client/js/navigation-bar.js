@@ -10,12 +10,12 @@ class NavigationBar extends HTMLElement {
                     <div class="header-branding">
                         <img src="./assets/logo_lasi.png" alt="LASI Logo" class="logo-img">
                         
-                        <a href="/" class="header-title">
+                        <a href="./index.html" class="header-title">
                             LA<span class="title-highlight">SI</span>
                         </a>
                     </div>
 
-                    <nav class="navigation-bar">
+                    <nav class="navigation-links">
                         <a href="/" class="nav-link">Início</a>
                         <a href="/" class="nav-link">Cronograma</a>
                         <a href="/" class="nav-link">Membros</a>

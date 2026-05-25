@@ -4,9 +4,510 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <!-- Styles -->
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/navigation-bar.css">
+    
 </head>
 <body>
-    <h1>Sla mano</h1>
+    <navigation-bar></navigation-bar>
+    
+    <div id="ferrari-intro" class="splash-container">
+    <div id="splash-content-block" class="splash-content">
+        <h1 class="splash-logo">
+            LA<span class="splash-highlight">SI</span>
+        </h1>
+        <div class="splash-loader"></div>
+    </div>
+</div>
+
+<style>
+    .splash-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #000000;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        visibility: visible;
+        /* Transição suave da tela preta sumindo (reduzida para 1s) */
+        transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), 
+                    visibility 1s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .splash-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        opacity: 1;
+        /* Transição exclusiva para as letras sumirem antes de tudo */
+        transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                    transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .splash-logo {
+        font-family: var(--font-michroma, 'Michroma', sans-serif);
+        font-size: 4rem;
+        color: #ffffff;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        opacity: 0;
+        transform: scale(0.92);
+        animation: logoReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .splash-highlight {
+        color: var(--brand-yellow, #fccc06);
+        text-shadow: 0 0 25px rgba(252, 204, 6, 0.5);
+    }
+
+    .splash-loader {
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, transparent, var(--brand-yellow, #fccc06), transparent);
+        animation: lineLoad 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.4s;
+    }
+
+    /* --- CLASSES DE DESAPARECIMENTO (DISPARADAS PELO JS) --- */
+
+    /* Etapa 1: Apaga as letras primeiro e dá um leve efeito de encolhimento */
+    .splash-content.content-fade-out {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    /* Etapa 2: Apaga a cortina preta de fundo */
+    .splash-container.fade-out {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* --- TIMELINE DE ANIMAÇÕES INTERNAS --- */
+    @keyframes logoReveal {
+        to {
+            opacity: 1;
+            transform: scale(1);
+            letter-spacing: 0.2em;
+        }
+    }
+
+    @keyframes lineLoad {
+        to {
+            width: 180px;
+        }
+    }
+
+    body.intro-active {
+        overflow: hidden !important;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const splash = document.getElementById("ferrari-intro");
+        const splashContent = document.getElementById("splash-content-block");
+        
+        document.body.classList.add("intro-active");
+
+        /* ==========================================
+           TIMELINE DE TEMPO (DURAÇÃO REDUZIDA)
+           ========================================== */
+        
+        // 1. As letras brilham por apenas 1.8 segundos (antes eram 3s)
+        const tempoExibicaoLetras = 1800; 
+        
+        // 2. Tempo de espera para a tela preta sumir LOGO APÓS as letras sumirem
+        const delayTelaPreta = 600; 
+
+        // Passo 1: Desaparecer apenas com as letras (LASI)
+        setTimeout(() => {
+            splashContent.classList.add("content-fade-out");
+            
+            // Passo 2: Logo em seguida, remove a cortina de fundo preto
+            setTimeout(() => {
+                splash.classList.add("fade-out");
+                document.body.classList.remove("intro-active");
+
+                // Passo 3: Limpeza completa do HTML após o término do efeito
+                setTimeout(() => {
+                    splash.remove();
+                }, 1000); // Combinando com 1s de transição da splash-container
+
+            }, delayTelaPreta);
+
+        }, tempoExibicaoLetras);
+    });
+</script>
+    
+    <div class="main-container">
+
+    <section class="carousel-section">
+        <div class="carousel-wrapper">
+            
+            <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=1200');">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="carousel-tag">Research & Development</span>
+                    <h2 class="carousel-title">Inteligência<br><span class="text-gradient">Artificial</span></h2>
+                    <p class="carousel-desc">Desenvolvendo algoritmos de aprendizado profundo para a resolução de problemas complexos e tomadas de decisão inteligentes.</p>
+                    <a href="#projetos" class="btn-lasi">Explorar Pesquisas</a>
+                </div>
+            </div>
+
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200');">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="carousel-tag">Engineering</span>
+                    <h2 class="carousel-title">Sistemas de<br><span class="text-gradient">Automação</span></h2>
+                    <p class="carousel-desc">Integração avançada entre hardware e software aplicados à robótica colaborativa e otimização de processos críticos.</p>
+                    <a href="#projetos" class="btn-lasi">Ver Laboratório</a>
+                </div>
+            </div>
+
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200');">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="carousel-tag">Future Tech</span>
+                    <h2 class="carousel-title">Sistemas<br><span class="text-gradient">Inteligentes</span></h2>
+                    <p class="carousel-desc">Arquitetura de sistemas embarcados e ecossistemas IoT resilientes para monitoramento de dados em tempo real.</p>
+                    <a href="#projetos" class="btn-lasi">Documentação</a>
+                </div>
+            </div>
+
+            <div class="carousel-dots">
+                <div class="dot active" onclick="setSlide(0)"></div>
+                <div class="dot" onclick="setSlide(1)"></div>
+                <div class="dot" onclick="setSlide(2)"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos" class="features-section">
+        <div class="card-grid">
+            
+            <div class="feature-card">
+                <div class="card-icon">⚡</div>
+                <h3>Modelagem Preditiva</h3>
+                <p>Criação de modelos computacionais focados na antecipação e simulação de eventos complexos.</p>
+            </div>
+
+            <div class="feature-card highlighted">
+                <div class="card-icon">🧠</div>
+                <h3>Pesquisa Avançada</h3>
+                <p>Uso de frameworks de ponta e desenvolvimento focado no avanço tecnológico do laboratório.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-icon">🛠️</div>
+                <h3>Hardware & IoT</h3>
+                <p>Desenvolvimento e integração de dispositivos inteligentes operando sob rígidos padrões de comunicação.</p>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<style>
+    /* --- RESET INTERNO DO MAIN --- */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* --- CONTAINER PRINCIPAL --- */
+    /* Aplica o gradiente suavizado anti-linhas + textura de ruído + fundo escuro corrigido */
+    .main-container {
+        width: 100%;
+        min-height: calc(100vh - 75px); /* Desconta a altura do seu header */
+        background-color: var(--slate-bg-end);
+        background-image: 
+            url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.015'/%3E%3C/svg%3E"),
+            linear-gradient(
+                to bottom,
+                var(--slate-bg-start) 0%,
+                #151a21 6.7%,
+                #13181f 13.3%,
+                #11161d 20%,
+                #10141a 26.7%,
+                #0e1218 33.3%,
+                #0c1016 40%,
+                var(--slate-bg-mid) 46.7%,
+                #0b0f15 53.3%,
+                #090c12 60%,
+                #070a0f 66.7%,
+                #05080c 73.3%,
+                #03060a 80%,
+                #020407 86.7%,
+                #010204 93.3%,
+                var(--slate-bg-end) 100
+            );
+        background-attachment: fixed;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 80px;
+        padding-bottom: 80px;
+    }
+
+    /* --- ESTRUTURA DO CARROSSEL (FADE EFFECT) --- */
+    .carousel-section {
+        width: 100%;
+    }
+
+    .carousel-wrapper {
+        position: relative;
+        width: 100%;
+        height: 70vh; /* Altura ideal na tela */
+        overflow: hidden;
+        border-bottom: 2px solid rgba(252, 204, 6, 0.2);
+    }
+
+    .carousel-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 1;
+        transition: opacity 1.2s ease-in-out;
+        display: flex;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* O slide ativo ganha opacidade e sobrepõe os outros */
+    .carousel-slide.active {
+        opacity: 1;
+        z-index: 2;
+    }
+
+    /* Overlay escuro em degradê para garantir leitura do texto à esquerda */
+    .carousel-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(1, 4, 9, 0.95) 25%, rgba(1, 4, 9, 0.4) 100%);
+        z-index: 3;
+    }
+
+    /* Bloco de conteúdo interno do Carrossel */
+    .carousel-content {
+        position: relative;
+        z-index: 4;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 40px;
+        transform: translateY(15px);
+        opacity: 0;
+        transition: all 0.8s ease-out 0.3s;
+    }
+
+    /* Animação interna do texto quando o slide ativa */
+    .carousel-slide.active .carousel-content {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .carousel-tag {
+        color: var(--brand-yellow);
+        font-family: var(--font-michroma);
+        font-size: var(--text-xs, 0.75rem);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 16px;
+    }
+
+    .carousel-title {
+        font-family: var(--font-michroma);
+        font-size: var(--text-2xl);
+        line-height: 1.2;
+        margin-bottom: 20px;
+        color: #ffffff;
+    }
+
+    .text-gradient {
+        background: linear-gradient(135deg, #ffffff 40%, var(--brand-yellow));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .carousel-desc {
+        font-size: var(--text-base);
+        color: var(--text-muted);
+        max-width: 580px;
+        line-height: 1.6;
+        margin-bottom: 35px;
+    }
+
+    /* Botão Premium do LASI */
+    .btn-lasi {
+        display: inline-block;
+        padding: 14px 32px;
+        background-color: var(--brand-yellow);
+        color: var(--slate-bg-end);
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 4px;
+        font-family: var(--font-michroma);
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-lasi:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(252, 204, 6, 0.25);
+    }
+
+    /* Indicadores de bolinhas (Dots) */
+    .carousel-dots {
+        position: absolute;
+        bottom: 32px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        z-index: 5;
+    }
+
+    .dot {
+        width: 30px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .dot.active {
+        background: var(--brand-yellow);
+        width: 60px; /* Efeito estendido na bolinha ativa */
+    }
+
+    /* --- GRID DE RECURSOS (CARDS) --- */
+    .features-section {
+        width: 100%;
+        max-width: 1200px;
+        padding: 0 40px;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+    }
+
+    .feature-card {
+        background-color: rgba(22, 27, 34, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 36px;
+        border-radius: 8px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .feature-card h3 {
+        font-family: var(--font-michroma);
+        font-size: var(--text-md);
+        margin: 16px 0 12px 0;
+        color: #ffffff;
+    }
+
+    .feature-card p {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        line-height: 1.6;
+    }
+
+    .card-icon {
+        font-size: 1.8rem;
+    }
+
+    /* Interações do Card comum */
+    .feature-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 255, 255, 0.12);
+        background-color: rgba(22, 27, 34, 0.6);
+    }
+
+    /* Card com Destaque em Amarelo */
+    .feature-card.highlighted {
+        border-color: rgba(252, 204, 6, 0.15);
+        background-color: rgba(252, 204, 6, 0.01);
+    }
+
+    .feature-card.highlighted:hover {
+        border-color: var(--brand-yellow);
+    }
+
+    /* --- RESPONSIVIDADE (MOBILE) --- */
+    @media (max-width: 768px) {
+        .carousel-wrapper { height: 60vh; }
+        .carousel-title { font-size: var(--text-xl, 2rem); }
+        .carousel-content { padding: 0 24px; }
+        .features-section { padding: 0 24px; }
+        .main-container { gap: 48px; }
+    }
+</style>
+
+<script>
+    (function() {
+        let currentIdx = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        let timer = null;
+
+        // Altera o slide com base no índice numérico
+        window.setSlide = function(index) {
+            // Remove estados ativos atuais
+            slides[currentIdx].classList.remove('active');
+            dots[currentIdx].classList.remove('active');
+            
+            currentIdx = index;
+            
+            // Adiciona estados ativos no novo slide selecionado
+            slides[currentIdx].classList.add('active');
+            dots[currentIdx].classList.add('active');
+            
+            // Reseta o temporizador para evitar pulos duplos ao clicar manualmente
+            resetAutoPlay();
+        };
+
+        function nextSlide() {
+            let next = (currentIdx + 1) % slides.length;
+            setSlide(next);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(timer);
+            timer = setInterval(nextSlide, 6000); // Avança automaticamente a cada 6 segundos
+        }
+
+        // Inicializa o autoplay na carga da página
+        resetAutoPlay();
+    })();
+</script>
+
+    <!-- Scripts -->
+    <script src="./js/navigation-bar.js"></script>
 </body>
 </html>

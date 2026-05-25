@@ -11,8 +11,10 @@ import { get_public_path, get_template, delete_public, copy_to_public } from './
 
 function init_public() {
     delete_public();            // Clear the "public" directory before rendering the site.
-    copy_to_public('css');      // Copy the "server/css" directory to "public/css".
-    copy_to_public('js');       // Copy the "server/js" directory to "public/js".
+    // Copy the "client/*" folders to "public/*".
+    copy_to_public('css');
+    copy_to_public('js');
+    copy_to_public('assets');
 }
 
 /**

@@ -5,14 +5,16 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node server/run.js",
-    "build": "node server/build.js"
+    "dev": "node server/dev.js",
+    "devb": "node server/dev.js build"
   },
   "author": "Splantapot",
   "license": "ISC",
   "type": "module",
   "dependencies": {
     "axios": "^1.16.0",
-    "ejs": "^5.0.2"
+    "ejs": "^5.0.2",
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "@types/google-apps-script": "^2.0.8"

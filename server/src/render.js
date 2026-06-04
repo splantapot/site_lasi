@@ -10,7 +10,8 @@ import Eventos from './classes/Eventos.js';
 import { get_public_path, get_template, delete_public, copy_to_public } from './path_util.js';
 
 function init_public() {
-    delete_public();            // Clear the "public" directory before rendering the site.
+    // Clear the "public" directory before rendering the site.
+    delete_public();
     // Copy the "client/*" folders to "public/*".
     copy_to_public('css');
     copy_to_public('js');

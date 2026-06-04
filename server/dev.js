@@ -5,7 +5,7 @@ const APP_PORT = 8080;
 
 // Import another modules
 import path from 'path';
-import { VIEWS_PATH, TMP_PATH, CSS_PATH, JS_PATH, ASSETS_PATH } from './config.js';
+import { VIEWS_PATH, TMP_PATH, ASSETS_PATH, CSS_PATH, JS_PATH } from './config.js';
 
 // ========================================================
 // Setup for the dev application

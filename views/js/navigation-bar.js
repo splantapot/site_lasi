@@ -8,7 +8,7 @@ class NavigationBar extends HTMLElement {
             <header class="site-header">
                 <div class="header-container">
                     <div class="header-branding">
-                        <img src="/assets/logo_lasi.png" alt="LASI Logo" class="logo-img">
+                        <img src="./assets/logo_lasi.png" alt="LASI Logo" class="logo-img">
                         
                         <a href="/" class="header-title">
                             LA<span class="title-highlight">SI</span>

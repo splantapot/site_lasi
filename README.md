@@ -6,6 +6,8 @@ Este repositório documenta e registra o código fonte do site da Liga Acadêmic
 
 ## Estrutura do Projeto
 
+FALTA ATUALIZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
+
 ```
 SITE_LASI/
 ├── api/                     <-- Serviços do código Google Scripts

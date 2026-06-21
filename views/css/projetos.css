@@ -1,0 +1,239 @@
+* {
+    --pcb-color-cyan: #00FFFF;
+    --pcb-color-blue: #1A8CFF;
+}
+
+/* ==========================================================================
+   AJUSTE DE TÍTULO MINIMALISTA
+   ========================================================================== */
+
+.text-center-clean {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.text-center-clean .hero-title {
+    font-family: var(--font-michroma);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: 0; 
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #ffffff 30%, var(--brand-yellow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   LINHA DO TEMPO ESTILO PCB (Printed Circuit Board)
+   ========================================================================== */
+
+.pcb-timeline-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 10px 0;
+}
+
+/* A trilha de cobre central */
+.pcb-timeline {
+    position: relative;
+    width: 100%;
+}
+
+.pcb-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--brand-yellow), rgba(252, 204, 6, 0.3), var(--brand-yellow));
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(252, 204, 6, 0.4);
+    z-index: 1;
+}
+
+/* Container de cada item */
+.pcb-item {
+    position: relative;
+    width: 50%;
+    margin-bottom: 24px;
+    display: flex;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.pcb-item.left {
+    left: 0;
+    justify-content: flex-end;
+    padding-right: 45px;
+}
+
+.pcb-item.right {
+    left: 50%;
+    justify-content: flex-start;
+    padding-left: 45px;
+}
+
+/* O Nó da Placa (Ponto de Solda / Via) */
+.pcb-node {
+    position: absolute;
+    top: 25px;
+    width: 16px;
+    height: 16px;
+    background-color: #010409;
+    border: 4px solid var(--brand-yellow);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 8px var(--brand-yellow), inset 0 0 4px var(--brand-yellow);
+    transition: all 0.3s ease;
+}
+
+.pcb-item.left .pcb-node {
+    right: -8px; 
+}
+
+.pcb-item.right .pcb-node {
+    left: -8px;
+}
+
+.pcb-item:hover .pcb-node {
+    background-color: var(--brand-yellow);
+    box-shadow: 0 0 15px var(--brand-yellow);
+    transform: scale(1.2);
+}
+
+/* O Card do conteúdo (Estilo Componente Eletrônico / Chip) */
+.pcb-content {
+    background-color: rgba(22, 27, 34, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid rgba(252, 204, 6, 0.4); 
+    padding: 20px 24px;
+    border-radius: 8px;
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+/* Linha condutora horizontal */
+.pcb-content::before {
+    content: '';
+    position: absolute;
+    top: 31px;
+    width: 25px;
+    height: 2px;
+    background-color: rgba(252, 204, 6, 0.4);
+}
+
+.pcb-item.left .pcb-content::before {
+    right: -25px;
+}
+
+.pcb-item.right .pcb-content::before {
+    left: -25px;
+}
+
+.pcb-content:hover {
+    border-color: rgba(252, 204, 6, 0.3);
+    border-left-color: var(--brand-yellow);
+    background-color: rgba(22, 27, 34, 0.98);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Textos internos da Timeline */
+.pcb-date {
+    font-family: var(--font-michroma);
+    font-size: 0.75rem;
+    color: var(--brand-yellow);
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.pcb-content h3 {
+    font-family: var(--font-michroma);
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.pcb-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   FINAL DA LINHA DO TEMPO (PCB FOOTER COM SETA COBRE)
+   ========================================================================== */
+
+.pcb-timeline-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 25px; 
+    margin-top: -2px;  
+    z-index: 2;
+    width: 100%;
+}
+
+.pcb-timeline-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 14px solid var(--brand-yellow);
+    filter: drop-shadow(0 4px 6px rgba(252, 204, 6, 0.4));
+}
+
+.pcb-continuation-text {
+    font-family: var(--font-michroma);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.pcb-timeline-footer:hover .pcb-continuation-text {
+    opacity: 1;
+    color: var(--brand-yellow);
+    text-shadow: 0 0 8px rgba(252, 204, 6, 0.6);
+}
+
+/* ==========================================================================
+   ANIMAÇÕES
+   ========================================================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

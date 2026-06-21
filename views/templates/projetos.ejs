@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LASI - Projetos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    
+    <link class="reldoc" rel="stylesheet" href="./css/style.css">
+    <link class="reldoc" rel="stylesheet" href="./css/navigation-bar.css">
+    <link class="reldoc" rel="stylesheet" href="./css/slider-box.css">
+    <link class="reldoc" rel="stylesheet" href="./css/projetos.css">
+</head>
+<body>
+    <!-- <pcb-background color="var(--pcb-color-blue)"></pcb-background> -->
+    <pcb-background color="var(--pcb-color-cyan)"></pcb-background>
+
+    <navigation-bar></navigation-bar>
+    
+    <main class="main-container">
+        <section class="hero-section text-center-clean">
+            <h1 class="hero-title"><span class="text-gradient">Nossos Projetos</span></h1>
+        </section>
+
+        <section class="pcb-timeline-section">
+            <div class="pcb-timeline">
+                
+                <div class="pcb-item left" style="animation-delay: 0.1s;">
+                    <div class="pcb-node"></div>
+                    <div class="pcb-content">
+                        <span class="pcb-date">Etapa 01</span>
+                        <h3>Concepção & Hardware</h3>
+                        <p>Definição dos componentes da PCB, levantamento de requisitos e diagramação dos primeiros circuitos esquemáticos.</p>
+                    </div>
+                </div>
+
+                <div class="pcb-item right" style="animation-delay: 0.3s;">
+                    <div class="pcb-node"></div>
+                    <div class="pcb-content">
+                        <span class="pcb-date">Etapa 02</span>
+                        <h3>Prototipagem de Firmware</h3>
+                        <p>Desenvolvimento do código base dos microcontroladores e testes iniciais de comunicação e baixo nível.</p>
+                    </div>
+                </div>
+
+                <div class="pcb-item left" style="animation-delay: 0.5s;">
+                    <div class="pcb-node"></div>
+                    <div class="pcb-content">
+                        <span class="pcb-date">Etapa 03</span>
+                        <h3>Integração e APIs</h3>
+                        <p>Construção da camada de software que conecta o hardware aos serviços em nuvem através de APIs REST/MQTT.</p>
+                    </div>
+                </div>
+
+                <div class="pcb-item right" style="animation-delay: 0.7s;">
+                    <div class="pcb-node"></div>
+                    <div class="pcb-content">
+                        <span class="pcb-date">Etapa 04</span>
+                        <h3>Interface & Testes Finais</h3>
+                        <p>Desenvolvimento do dashboard web/mobile e homologação final do circuito sob condições de estresse.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcb-timeline-footer">
+                <p class="pcb-continuation-text">TO BE CONTINUED...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="./js/navigation-bar.js"></script>
+    <script src="./js/pcb-background.js"></script>
+</body>
+</html>

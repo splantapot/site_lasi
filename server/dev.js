@@ -33,7 +33,11 @@ app.use('/js', express.static(JS_PATH));
 
 app.get('/', (req, res) => {
     res.render('index');
-})
+});
+
+app.get('/projetos', (req, res) => {
+    res.render('projetos');
+});
 
 app.listen(APP_PORT);
 console.log('Development app running! Available in:');

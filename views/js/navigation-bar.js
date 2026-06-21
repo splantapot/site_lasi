@@ -17,7 +17,7 @@ class NavigationBar extends HTMLElement {
 
                     <nav class="navigation-links">
                         <a href="/" class="nav-link">Início</a>
-                        <a href="/" class="nav-link">Cronograma</a>
+                        <a href="/projetos" class="nav-link">Projetos</a>
                         <a href="/" class="nav-link">Membros</a>
                         <a href="/" class="nav-link">TCCs</a>
                     </nav>

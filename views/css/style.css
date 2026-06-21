@@ -61,15 +61,46 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: var(--black);
-    color: var(--text-color);
-    min-height: 100vh;
+html {
+    scroll-behavior: smooth;
+    background-color: #010409; /* Cor de segurança da raiz (Preto GitHub) */
 }
 
+body {
+    /* Corrigido de 100__ para 100% */
+    background-image: linear-gradient(
+        to bottom,
+        rgba(36, 41, 46, 0.35) 0%,     /* Deixa o topo expor o SVG */
+        rgba(21, 26, 33, 0.65) 20%,
+        rgba(17, 22, 29, 0.80) 40%,
+        rgba(12, 16, 22, 0.90) 70%,
+        rgba(1, 4, 9, 0.98) 100%       /* Transição suave para o breu */
+    );
+    background-color: var(--black);   /* Cor de segurança */
+    background-attachment: fixed;
+    background-size: cover;
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    isolation: isolate;
+}
+
+/* Limpa o elemento main para que ele seja 100% transparente */
 main {
     min-height: 100vh;
+    position: relative; 
+    background: transparent !important; /* Remove qualquer interferência de cor */
+}
 
-    background: #24292E;
-    background: linear-gradient(180deg, rgba(36, 41, 46, 1) 0%, rgba(32, 37, 42, 1) 10%, rgba(29, 33, 38, 1) 20%, rgba(25, 30, 34, 1) 30%, rgba(21, 26, 30, 1) 40%, rgba(18, 22, 26, 1) 50%, rgba(14, 18, 22, 1) 60%, rgba(11, 15, 18, 1) 70%, rgba(7, 11, 14, 1) 80%, rgba(4, 7, 10, 1) 90%, rgba(1, 4, 9, 1) 100%);
+/* --- CONTEXTO DE CONTEÚDO (Mantendo o espaçamento estrutural) --- */
+.main-container {
+    min-height: calc(100vh - 75px); 
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
 }

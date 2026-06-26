@@ -15,6 +15,7 @@
     --text-md:   1.25rem;   /* 20px - Subtítulos / Títulos menores */
     --text-lg:   1.5rem;    /* 24px - Títulos de seções */
     --text-xl:   2rem;      /* 32px - Títulos grandes (H1) */
+    --text-3x2l: 2.5rem;    /* 40px - Títulos médios (H1) */
     --text-2xl:  3rem;      /* 48px - Seções Hero / Destaques massivos */
     
     /* --- FONT WEIGHTS --- */
@@ -39,6 +40,7 @@
     --accent-yellow:  #ffc400; /* Amarelo de Destaque: Para ícones, badges ou hover */
     --dark-bg:        #24292e; /* Fundo Escuro: Para áreas de destaque ou rodapés */
     --neutral-light:  #E9ECEF; /* Cinza Claro: Fundo neutro, cards ou divisores */
+    --off-gray:       rgba(255, 255, 255, 0.2); /* Cinza ligeiramente transparente */
 
     /* --- CORES PADRÃO (Frequentemente úteis) --- */
     --black: #000000;
@@ -56,6 +58,8 @@
     --lime-200:       #E4F600; /* Amarelo ligeiramente esverdeado */
     --lime-300:       #DDFF00; /* Chartreuse clássico */
     --lime-400:       #C7F701; /* Verde lima suave */
+
+    --navbar-max-size: 70px;
 }
 
 * {

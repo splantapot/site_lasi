@@ -13,6 +13,8 @@ navigation-bar {
     padding: 10px 12px;
     font-family: var(--font-montserrat);
     border-bottom: 3px solid var(--brand-yellow);
+
+    max-height: var(--navbar-max-size);
 }
 
 /* Main container */

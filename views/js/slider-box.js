@@ -1,4 +1,7 @@
 class SliderBox extends HTMLElement {
+
+    ACTIVE_CLASS = 'slider__active'
+
     constructor() {
         super();
         this.timer = null;
@@ -20,39 +23,40 @@ class SliderBox extends HTMLElement {
         this.active = index;
         const slides = Array.from(this.querySelectorAll('slider-item'));
 
-        const dots_box = this.querySelector('.slider-dots');
+        const dots_box = this.querySelector('.slider__dots-container');
         const dots = Array.from(dots_box.children);
 
         for (let i = 0; i < dots.length; i++) {
             const dot = dots[i];
-            if (dot.classList.contains('slider-active')) dot.classList.remove('slider-active');
-            if (i == index) dot.classList.add('slider-active');
+            if (dot.classList.contains(this.ACTIVE_CLASS)) dot.classList.remove(this.ACTIVE_CLASS);
+            if (i == index) dot.classList.add(this.ACTIVE_CLASS);
 
             const slide = slides[i];
-            if (slide.classList.contains('slider-active')) slide.classList.remove('slider-active');
-            if (i == index) slide.classList.add('slider-active');
+            if (slide.classList.contains(this.ACTIVE_CLASS)) slide.classList.remove(this.ACTIVE_CLASS);
+            if (i == index) slide.classList.add(this.ACTIVE_CLASS);
         }
 
-        this.resetTimer();
+        // this.resetTimer();
     }
 
     connectedCallback() {
-        const children = Array.from(this.children); 
+        const children = Array.from(this.children); // Obtém a lista dos slide-itens
         this.qnt_slides = children.length? children.length: 1;
 
         this.innerHTML = `
-            <div class="slider-container">
-                <div class="slider-dots"></div>
+            <div class="slider__container">
+                <div class="slider__dots-container"></div>
             </div>
         `;
 
-        const container = this.querySelector('.slider-container');
-        const dots_box = this.querySelector('.slider-dots');
+        const container = this.querySelector('.slider__container');
+        const dots_box = this.querySelector('.slider__dots-container');
+        // Reorganiza os slide-itens adicionando seus respectivos "dots"
         children.forEach((item, i) => {
             container.appendChild(item);
             
             const dot = document.createElement('div');
-            dot.className = 'slider-dot';
+            dot.className = 'slider__dot';
             dot.onclick = () => this.setActive(i);
             dots_box.appendChild(dot);
         });
@@ -73,9 +77,9 @@ class SliderItem extends HTMLElement {
         this.style.backgroundImage = img? `url("${img}")` : 'none';
 
         this.innerHTML = `
-            <div class="slider-item-container">
-                <h3 class="slider-item-title"> ${title}</h3>
-                <p class="slider-item-text">${text}</p>
+            <div class="slider-item__container">
+                <h3 class="slider-item__title"> ${title}</h3>
+                <p class="slider-item__text">${text}</p>
             </div>
         `;
     }

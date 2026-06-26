@@ -105,8 +105,25 @@ slider-item.slider__active .slider-item__container {
 }
 
 .slider-item__text {
-    font-size: var(--text-base, 1rem);
+    font-size: var(--text-base);
     color: var(--text-muted);
     max-width: 48%;
     line-height: 1.6;
+}
+
+.slider-item__link {
+    position: absolute;
+    font-size: var(--text-base);
+    text-decoration: none;
+    color: var(--white);
+    border: 1px solid var(--white);
+    border-radius: 3px;
+    padding: 8px;
+    margin-top: 10px;
+    transition: 0.2s ease;
+}
+
+.slider-item__link:hover {
+    color: var(--black);
+    background-color: var(--white);
 }

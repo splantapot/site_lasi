@@ -73,6 +73,10 @@ class SliderItem extends HTMLElement {
         const text = this.getAttribute('text') || 'Some text...';
         const img = this.getAttribute('img') || undefined;
         const title = this.getAttribute('title') || 'Hello World!';
+
+        // Opções para adicionar um link
+        const link = this.getAttribute('link') || undefined;
+        const url = this.getAttribute('url') || undefined;
         
         this.style.backgroundImage = img? `url("${img}")` : 'none';
 
@@ -82,6 +86,15 @@ class SliderItem extends HTMLElement {
                 <p class="slider-item__text">${text}</p>
             </div>
         `;
+
+        if (link && url) {
+            const container = this.querySelector(".slider-item__container");
+            const new_a = document.createElement('a');
+            new_a.className = "slider-item__link"
+            new_a.innerHTML = link;
+            new_a.href = url;
+            container.appendChild(new_a);
+        }
     }
 }
 

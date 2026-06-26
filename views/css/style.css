@@ -26,7 +26,7 @@
     --text-color:       #f0f6fc; /* Off-white para textos em fundo escuro */
     --text-muted:       #b1b5c9; /* Antigo azul-cinza-fraco (perfeito para subtítulos) */
     --text-muted-hvr:   #d8dcf3; /* for hover */
-    --text-dark:      #1F242C; /* Cor base para textos escuros em elementos claros */
+    --text-dark:        #1F242C; /* Cor base para textos escuros em elementos claros */
 
     /* --- BRAND COLORS (Base) --- */
     --brand-blue:       #04044c; /* Seu azul-escuro principal */
@@ -36,10 +36,13 @@
 
     /* --- CORES AUXILIARES (Base & Layout) --- */
     --purple-deep:    #3F1C71; /* Roxo Profundo: Ótimo para detalhes escuros ou heros */
+    --accent-yellow:  #ffc400; /* Amarelo de Destaque: Para ícones, badges ou hover */
+    --dark-bg:        #24292e; /* Fundo Escuro: Para áreas de destaque ou rodapés */
     --neutral-light:  #E9ECEF; /* Cinza Claro: Fundo neutro, cards ou divisores */
-    --dark-bg:         #24292e; /* Fundo Escuro: Para áreas de destaque ou rodapés */
-    --accent-yellow:     #ffc400; /* Amarelo de Destaque: Para ícones, badges ou hover */
+
+    /* --- CORES PADRÃO (Frequentemente úteis) --- */
     --black: #000000;
+    --white: #FFFFFF;
 
     /* --- CORES DE ACENTO VIBRANTES (Ações, Botões & Status) --- */
     --blue-electric:  #1A73E8; /* Azul Elétrico: Links ou botões primários */
@@ -59,43 +62,44 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Colocar fonte padrão */
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 html {
     scroll-behavior: smooth;
-    background-color: #010409; /* Cor de segurança da raiz (Preto GitHub) */
+    background-color: var(--black);
 }
 
 body {
-    /* Corrigido de 100__ para 100% */
+    /* Cor padrão de fundo */
     background-image: linear-gradient(
         to bottom,
-        rgba(36, 41, 46, 0.35) 0%,     /* Deixa o topo expor o SVG */
+        rgba(36, 41, 46, 0.35) 0%,
         rgba(21, 26, 33, 0.65) 20%,
         rgba(17, 22, 29, 0.80) 40%,
         rgba(12, 16, 22, 0.90) 70%,
-        rgba(1, 4, 9, 0.98) 100%       /* Transição suave para o breu */
+        rgba(1, 4, 9, 0.98) 100%
     );
-    background-color: var(--black);   /* Cor de segurança */
+    background-color: var(--black);
     background-attachment: fixed;
     background-size: cover;
+
     color: var(--text-color);
     min-height: 100vh;
+    
     overflow-x: hidden;
-
     isolation: isolate;
 }
 
-/* Limpa o elemento main para que ele seja 100% transparente */
 main {
-    min-height: 100vh;
+    min-height: 0;
     position: relative; 
-    background: transparent !important; /* Remove qualquer interferência de cor */
+    background: transparent !important; /* Torna "main" trnsparente. */
 }
 
-/* --- CONTEXTO DE CONTEÚDO (Mantendo o espaçamento estrutural) --- */
-.main-container {
-    min-height: calc(100vh - 75px); 
+/* Classe de main padrão */
+.l-main {
     padding: 30px 24px;
     display: flex;
     flex-direction: column;

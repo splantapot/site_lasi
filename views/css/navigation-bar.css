@@ -1,4 +1,4 @@
-/* navigation-bar element */
+/* Component style */
 navigation-bar {
     display: block;
     width: 100%;
@@ -6,8 +6,8 @@ navigation-bar {
     z-index: 999;
 }
 
-/* header main div */
-.site-header {
+/* Style for navbar */
+.nav-bar {
     background-color: var(--dark-bg);
     color: var(--text-muted);
     padding: 10px 12px;
@@ -15,38 +15,33 @@ navigation-bar {
     border-bottom: 3px solid var(--brand-yellow);
 }
 
-/* header container */
-.header-container {
+/* Main container */
+.nav-bar__container {
     margin: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Forces BRANDING on left and NAV on right */
-    padding-left: 35px;    /*LOGO with margin on the left*/
-    padding-right: 25px;    /*NAV with margin on the right*/
+    justify-content: space-between;
+    padding-left: 35px;
+    padding-right: 25px;
 }
 
-.header-branding {
-    position: relative; /* Useful to title */
+/* Branding container */
+.nav-bar__branding {
+    position: relative;
     display: inline-flex;
     align-items: center;
 }
 
-/* logo */
-.header-branding img {
+.nav-bar__logo {
     height: 50px;
     width: auto;
     display: block;
     opacity: 0.70;
 }
 
-/* title */
-.header-title {
-    position: absolute; /*enables title overlay*/
-    
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    
+/* Confiugurações do texto da logo */
+.nav-bar__title-highlight,
+.nav-bar__title {
     font-size: var(--text-lg);
     font-family: var(--font-michroma);
     color: var(--text-color);
@@ -61,29 +56,31 @@ navigation-bar {
         0 4px 12px rgba(0, 0, 0, 0.9);
 }
 
-.title-highlight {
+.nav-bar__title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.nav-bar__title-highlight {
     color: var(--accent-yellow);
 }
 
-/* logo style */
-.header-logo img {
-    height: 40px;
-}
-
-/* Links from navigation */
-.navigation-links {
+/* Configuração da parte dos links */
+.nav-bar__links {
     display: flex;
     align-items: center;
-    gap: 40px; /*itens spacing*/
+    gap: 35px;
 }
 
-.nav-link {
+.nav-bar__link {
     color: var(--text-muted);
     font-size: var(--text-base);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
-.nav-link:hover {
+.nav-bar__link {
     color: var(--text-muted-hvr);
 }

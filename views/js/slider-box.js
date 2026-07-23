@@ -36,7 +36,7 @@ class SliderBox extends HTMLElement {
             if (i == index) slide.classList.add(this.ACTIVE_CLASS);
         }
 
-        // this.resetTimer();
+        this.resetTimer();
     }
 
     connectedCallback() {

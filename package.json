@@ -1,7 +1,7 @@
 {
-  "name": "teste_site_lasi",
+  "name": "site_lasi",
   "version": "1.0.0",
-  "description": "Testing the development of the LASI's site using Netlify to build a static website, while the AppScript is used to get the data from Google sheets.",
+  "description": "Development of the LASI's site using Netlify to build a static website, while the AppScript is used to get the data from Google sheets.",
   "main": "server/index.js",
   "scripts": {
     "start": "node server/run.js",

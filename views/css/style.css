@@ -38,6 +38,9 @@
     /* --- CORES AUXILIARES (Base & Layout) --- */
     --purple-deep:    #3F1C71; /* Roxo Profundo: Ótimo para detalhes escuros ou heros */
     --accent-yellow:  #ffc400; /* Amarelo de Destaque: Para ícones, badges ou hover */
+    --shadow-yellow:  #cea500; /* Seu amarelo principal */
+    --shadow-cyan:    #0b0f19;    /* Seu amarelo principal */
+    --shadow-bg:      #161b22;
     --dark-bg:        #24292e; /* Fundo Escuro: Para áreas de destaque ou rodapés */
     --neutral-light:  #E9ECEF; /* Cinza Claro: Fundo neutro, cards ou divisores */
     --off-gray:       rgba(255, 255, 255, 0.2); /* Cinza ligeiramente transparente */

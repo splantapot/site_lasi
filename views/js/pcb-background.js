@@ -1,3 +1,5 @@
+// AI CODED!!!
+
 class PcbBackground extends HTMLElement {
     constructor() {
         super();
@@ -93,7 +95,7 @@ class PcbBackground extends HTMLElement {
                     overflow: hidden !important;
                     pointer-events: none !important;
                     display: block !important;
-                    background-color: #0b0f19;
+                    background-color: var(--shadow-cyan);
                 }
                 svg {
                     width: 100%;

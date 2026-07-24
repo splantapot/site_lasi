@@ -12,6 +12,7 @@
     <link class="reldoc" rel="stylesheet" href="./css/style.css">
     <link class="reldoc" rel="stylesheet" href="./css/navigation-bar.css">
     <link class="reldoc" rel="stylesheet" href="./css/slider-box.css">
+    <link class="reldoc" rel="stylesheet" href="./css/project-tree.css">
     <!-- <link class="reldoc" rel="stylesheet" href="./css/projetos.css"> -->
 </head>
 <body>
@@ -19,6 +20,50 @@
     <pcb-background color="var(--pcb-color-cyan)"></pcb-background>
 
     <navigation-bar></navigation-bar>
+
+    <main>
+        <project-tree title="Nossos Projetos" footer="To be continued...">
+
+        <project-branch
+            title="Projeto 1"
+            date="17 MAR 2026"
+            link="https://mail.google.com/"
+            text="
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Maecenas et tellus sed ipsum aliquet suscipit a at mi.
+            Suspendisse lacus felis, consectetur in arcu non, elementum elementum odio.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nam tempor, tortor et sagittis porta, orci purus cursus ligula, ut ullamcorper risus nulla in tellus. Morbi maximus massa suscipit, scelerisque nisl in, tincidunt elit."
+        ></project-branch>
+
+        <project-branch
+            title="Oxe"
+            link="https://mail.google.com/"
+            date="14 MAI 2026"
+            text="Heheheha"
+            thumbnail="./assets/blank-thumbnail.png"
+            
+        ></project-branch>
+
+        <project-branch
+            title=""
+            date=""
+            text=""
+        ></project-branch>
+
+        <project-branch
+            title=""
+            date=""
+            text=""
+        ></project-branch>
+        
+        </project-tree>
+    </main>
     
     <!--
     <main class="main-container">
@@ -74,6 +119,7 @@
     -->
     <script src="./js/navigation-bar.js"></script>
     <script src="./js/pcb-background.js"></script>
+    <script src="./js/project-tree.js"></script>
     <!-- <script src="./js/pcb-background.js"></script> -->
 </body>
 </html>

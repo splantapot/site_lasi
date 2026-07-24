@@ -200,12 +200,21 @@ project-branch:nth-child(even) .project-branch__container::after {
     transition: transform 0.2s ease, color 0.2s ease, filter 0.2s ease;
     text-decoration: none;
     z-index: 10;
+
+    width: 20px;
+    height: 20px;
 }
 
 .project-branch__link-icon:hover {
     color: var(--white);
     transform: scale(1.15) rotate(-10deg);
     filter: drop-shadow(0 0 6px var(--brand-yellow));
+}
+
+.project-branch__link-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
 }
 
 .project-branch__thumbnail-container {
@@ -258,8 +267,7 @@ project-branch:nth-child(even) .project-branch__container::after {
     font-weight: bold;
 }
 
-.project-branch__text,
-.project-branch__long-text {
+.project-branch__text {
     font-size: var(--text-sm);
     color: var(--text-muted);
     margin: 0;
@@ -277,4 +285,10 @@ project-branch:nth-child(even) .project-branch__container::after {
     -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.project-branch__footer {
+    height: 5%;
+    width: 100%;
+    background-color: rebeccapurple;
 }

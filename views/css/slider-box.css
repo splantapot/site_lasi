@@ -3,13 +3,16 @@
 =========================== */
 slider-box {
     display: block;
+    height: 100%;
     width: 100%;
 }
 
 .slider__container{
     position: relative;
     z-index: 1;
-    height: calc(90vh - var(--navbar-max-size));
+    height: 100%;
+    width: 100%;
+    /* height: calc(90vh - var(--navbar-max-size)); */
     overflow: hidden;
 }
 

@@ -1,0 +1,167 @@
+member-board {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: calc(100vh - var(--navbar-max-size));
+    overflow: hidden;
+}
+
+.member-board__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    /* background-image: url('./assets/member/default/background-member-2.jpg'); */ /*Injected via JS*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.member-board__header {
+    width: 100%;
+    text-align: center;
+    margin: 15px;
+    z-index: 2;
+    position: relative;
+}
+
+.member-board__header h2 {
+    font-family: var(--font-michroma);
+    font-size: var(--text-xl, 2rem);
+    color: var(--white, #ffffff);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.member-board__container {
+    position: relative;
+    z-index: 2;
+    padding: 5px 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 35px;
+}
+
+.member-board__area-title {
+    text-align: center;
+    font-family: var(--font-michroma);
+    font-size: var(--text-lg);
+    margin-bottom: 16px;
+    /* font-size: var(--text-md); */
+}
+
+.member-board__area-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* ===========================
+    MEMBERS CARDS
+=========================== */
+.member-card__container {
+    /* width: 250px; */
+    /* height: 360px; */
+    /* background-color: var(--shadow-cyan); */
+    background-color: var(--darkest-bg);
+    
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 6fr 1fr 1fr 1fr;
+    place-items: center;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.member-card__frame {
+    --ratio: 0.5;
+    width: calc(400px * var(--ratio));
+    height: calc(400px * var(--ratio));
+    margin: 15px 10px;
+}
+
+.member-card__frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.member-card__name {
+    font-family: var(--font-michroma);
+    font-size: var(--text-base);
+}
+
+.member-card__role {
+    /* font-family: var(--font-michroma); */
+    font-size: var(--text-base);
+}
+
+.member-card__media {
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    /* max-width: 80%; */
+    gap: 8px;
+    margin: 5px 10px;
+
+    --icon-size: 20px;
+    /* max-height: calc(var(--icon-size) + 8px); */
+    /* overflow: hidden; */
+}
+
+.member-card__media-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand-yellow);
+    transition: transform 0.2s ease, color 0.2s ease, filter 0.2s ease;
+    text-decoration: none;
+    z-index: 10;
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+.member-card__media-icon:hover {
+    color: var(--white);
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 6px var(--white));
+}
+
+.member-card__media-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.member-card__highlight::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15px; /* Distância da borda esquerda */
+    width: 35px;  /* Largura da bandeira */
+    height: 65px; /* Altura da bandeira */
+    background-color: var(--brand-yellow); /* Cor da bandeira (ou outra variável) */
+    
+    /* Cria o corte de bandeira junina (chanfrado na parte inferior) */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+    /* Efeito de sombreamento bem levinho que acompanha o recorte */
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+
+    z-index: 10; /* Garante que fique acima de tudo no card */
+}

@@ -39,6 +39,10 @@ app.get('/projetos', (req, res) => {
     res.render('projetos');
 });
 
+app.get('/membros', (req, res) => {
+    res.render('membros');
+});
+
 app.listen(APP_PORT);
 console.log('Development app running! Available in:');
 console.log(`http://localhost:${APP_PORT}/`);

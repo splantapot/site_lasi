@@ -166,7 +166,7 @@ class ProjectBranch extends HTMLElement {
             sliderBox.className = "project-branch__modal-slideshow";
             sliderBox.appendChild(this.presentation);
             modal.prepend(sliderBox);
-            console.log(this.presentation)
+            // console.log(this.presentation)
         }
 
         overlay.appendChild(modal);

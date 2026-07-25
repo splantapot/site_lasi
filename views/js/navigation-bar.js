@@ -1,8 +1,4 @@
 class NavigationBar extends HTMLElement {
-    constructor() {
-        super();
-    }
-
     connectedCallback() {
         this.innerHTML = `
             <header class="nav-bar">

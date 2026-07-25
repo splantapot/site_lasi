@@ -65,10 +65,6 @@ class SliderBox extends HTMLElement {
 }
 
 class SliderItem extends HTMLElement {
-    constructor() {
-        super();
-    }
-
     connectedCallback() {
         const text = this.getAttribute('text') || '';
         const img = this.getAttribute('img') || undefined;

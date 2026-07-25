@@ -70,9 +70,9 @@ class SliderItem extends HTMLElement {
         const img = this.getAttribute('img') || undefined;
         const title = this.getAttribute('title') || '';
 
-        // Opções para adicionar um link
-        const link = this.getAttribute('link') || undefined;
-        const url = this.getAttribute('url') || undefined;
+        // Opções para adicionar um link_text
+        const link_text = this.getAttribute('link-text') || undefined;
+        const link_url = this.getAttribute('link-url') || undefined;
 
         if (!this.hasAttribute('shadow-off')) {
             this.classList.add("slider__shadow");
@@ -87,12 +87,12 @@ class SliderItem extends HTMLElement {
             </div>
         `;
 
-        if (link && url) {
+        if (link_text && link_url) {
             const container = this.querySelector(".slider-item__container");
             const new_a = document.createElement('a');
-            new_a.className = "slider-item__link"
-            new_a.innerHTML = link;
-            new_a.href = url;
+            new_a.className = "slider-item__link-text"
+            new_a.innerHTML = link_text;
+            new_a.href = link_url;
             container.appendChild(new_a);
         }
     }

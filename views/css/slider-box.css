@@ -118,7 +118,7 @@ slider-item.slider__active .slider-item__container {
     line-height: 1.6;
 }
 
-.slider-item__link {
+.slider-item__link-text {
     position: absolute;
     font-size: var(--text-base);
     text-decoration: none;
@@ -130,7 +130,7 @@ slider-item.slider__active .slider-item__container {
     transition: 0.2s ease;
 }
 
-.slider-item__link:hover {
+.slider-item__link-text:hover {
     color: var(--black);
     background-color: var(--white);
 }

@@ -114,7 +114,11 @@ class ProjectBranch extends HTMLElement {
         // Add Button event
         this.querySelector('.project-branch__footer')
             .addEventListener('click', (e) => this.openDetailedView());
+    }
 
+    renderPresentation() {
+        this.presentation = undefined;
+        this.presentation_images = []
         // Get all presentation images [Numbered from 1 to 10]
         for (let i = 1; i <= 10; i++) {
             const present = this.getAttribute(`presentation${i}`) || undefined;
@@ -161,6 +165,7 @@ class ProjectBranch extends HTMLElement {
         const iconsWrapper = modal.querySelector('.project-branch__modal-icons-wrapper');
         this.renderShareIconsIn(iconsWrapper);
 
+        this.renderPresentation();
         if (this.presentation) {
             const sliderBox = document.createElement('div');
             sliderBox.className = "project-branch__modal-slideshow";

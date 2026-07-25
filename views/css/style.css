@@ -44,6 +44,7 @@
     --dark-bg:        #24292e; /* Fundo Escuro: Para áreas de destaque ou rodapés */
     --neutral-light:  #E9ECEF; /* Cinza Claro: Fundo neutro, cards ou divisores */
     --off-gray:       rgba(255, 255, 255, 0.2); /* Cinza ligeiramente transparente */
+    --overlay-black:  rgba(0,0,0, 0.6);
 
     /* --- CORES PADRÃO (Frequentemente úteis) --- */
     --black: #000000;

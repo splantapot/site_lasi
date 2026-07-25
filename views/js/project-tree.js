@@ -41,6 +41,8 @@ class ProjectBranch extends HTMLElement {
         super();
         // this.title = this.date = this.text = this.thumbnail = '';
         this.media = new Map();
+        this.presentation = undefined;
+        this.presentation_images = [];
 
         this.MEDIA_ICONS = {
             facebook:
@@ -66,6 +68,25 @@ class ProjectBranch extends HTMLElement {
         return Object.keys(this.MEDIA_ICONS).some((key) => this.media[key]);
     }
 
+    renderShareIconsIn(element) {
+        Object.keys(this.MEDIA_ICONS).forEach((key) => {
+            const attrValue = this.getAttribute(key);
+            this.media.set(key, attrValue);
+
+            if (attrValue) {
+                const link = document.createElement('a');
+                link.href = attrValue;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.className = 'project-branch__link-icon';
+                link.title = `Acessar ${this.capitalize(key)}`;
+
+                link.innerHTML = this.MEDIA_ICONS[key];
+                element.appendChild(link);
+            }
+        });
+    }
+
     connectedCallback() {
         this.title = this.getAttribute('title') || 'Título do Projeto';
         this.date = this.getAttribute('date') || 'DD/MM/AAAA';
@@ -76,7 +97,7 @@ class ProjectBranch extends HTMLElement {
         this.innerHTML = `
             <div class="project-branch__container">
                 <!-- Thumbnail Inserted via JS -->
-                <div class="project-branch__body">
+                <div class="project-branch__content">
                     <div class="project-branch__header">
                         <div class="project-branch__title-wrapper">
                             <h3 class="project-branch__title">${this.title}</h3>
@@ -84,6 +105,9 @@ class ProjectBranch extends HTMLElement {
                         <span class="project-branch__date">${this.date}</span>
                     </div>
                     <p class="project-branch__text">${this.text}</p>
+                    <div class="project-branch__footer">
+                        <h4  class="project-branch__details-text">Detalhes</h4>
+                    </div>
                 </div>
             </div>
         `;
@@ -104,47 +128,94 @@ class ProjectBranch extends HTMLElement {
         }
 
         const titleWrapper = this.querySelector('.project-branch__title-wrapper');
-        Object.keys(this.MEDIA_ICONS).forEach((key) => {
-            const attrValue = this.getAttribute(key);
+        this.renderShareIconsIn(titleWrapper)
 
-            this.media.set(key, attrValue);
+        // Add Button event
+        this.querySelector('.project-branch__footer')
+            .addEventListener('click', (e) => this.openDetailedView());
 
-            if (attrValue) {
-                const link = document.createElement('a');
-                link.href = attrValue;
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                link.className = 'project-branch__link-icon';
-                link.title = `Acessar ${this.capitalize(key)}`;
+        // Get all presentation images [Numbered from 1 to 10]
+        for (let i = 1; i <= 10; i++) {
+            const present = this.getAttribute(`presentation${i}`) || undefined;
+            if (present) {
+                this.presentation_images.push(present);
+            } else break;
+        }
 
-                link.innerHTML = this.MEDIA_ICONS[key];
-                titleWrapper.appendChild(link);
-                console.log(link)
-            }
-
-        });
-        // if (this.media.link) {
-            
-        //     const alink = document.createElement('a');
-        //     alink.href = this.media.link;
-        //     alink.target = '_blank';
-        //     alink.rel = 'noopener noreferrer';
-        //     alink.className = 'project-branch__link-icon';
-        //     alink.title = 'Acessar link';
-
-        //     alink.innerHTML = `
-        //         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        //             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-        //             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-        //         </svg>
-        //     `;
-
-        //     titleWrapper.appendChild(alink);
-        // }
+        if (this.presentation_images.length > 0) {
+            const slideshow = document.createElement('slider-box');
+            this.presentation_images.forEach((img) => {
+                const sliderItem = document.createElement('slider-item');
+                sliderItem.setAttribute('img', img);
+                sliderItem.setAttribute('shadow-off', 'shadow-off');
+                slideshow.appendChild(sliderItem);
+            });
+            this.presentation = slideshow;
+        }
     }
 
     openDetailedView() {
-        alert(`Opened ${this.title}`)
+        const overlay = document.createElement('div');
+        overlay.className = 'project-branch__modal-overlay';
+        
+        const modal = document.createElement('div');
+        modal.className = 'project-branch__modal-container';
+
+        modal.innerHTML = `
+            <!-- SLIDESHOW INSERTED VIA JS -->
+            <div class="project-branch__modal-content">
+                <div class="project-branch__modal-header">
+                    <div class="project-branch__modal-title-wrapper">
+                        <h3 class="project-branch__title">${this.title}</h3>
+                        <span class="project-branch__date">${this.date}</span>
+                    </div>
+                    <div class="project-branch__modal-icons-wrapper"></div>
+                </div>
+                <div class="project-branch__modal-text-box">
+                    <p class="project-branch__modal-text">${this.text}</p>
+                </div>
+            </div>
+        `;
+
+        const iconsWrapper = modal.querySelector('.project-branch__modal-icons-wrapper');
+        this.renderShareIconsIn(iconsWrapper);
+
+        if (this.presentation) {
+            const sliderBox = document.createElement('div');
+            sliderBox.className = "project-branch__modal-slideshow";
+            sliderBox.appendChild(this.presentation);
+            modal.prepend(sliderBox);
+            console.log(this.presentation)
+        }
+
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+
+        // Fade in ---------------------------------------------
+        requestAnimationFrame(() => {
+            overlay.classList.add('project-branch__modal-visible');
+        });
+
+        // Fade out --------------------------------------------
+        const closeModal = () => {
+            document.removeEventListener('keydown', handleEscPress);
+            overlay.classList.remove('project-branch__modal-visible');
+            setTimeout(() => {
+                overlay.remove();
+            }, 300); 
+        };
+
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) {
+                closeModal();
+            }
+        });
+
+        const handleEscPress = (event) => {
+            if (event.key === 'Escape') closeModal();
+        };
+
+        document.addEventListener('keydown', handleEscPress);
     }
 }
 

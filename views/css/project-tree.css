@@ -126,7 +126,7 @@ project-branch:nth-child(even) {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    overflow: visible; /* MUDANÇA NECESSÁRIA: permite que as linhas saiam para fora da caixa */
+    overflow: visible;
 }
 
 .project-branch__container:hover {
@@ -185,6 +185,7 @@ project-branch:nth-child(even) .project-branch__container::after {
 }
 
 /* FORMATS */
+.project-branch__modal-header,
 .project-branch__header {
     display: flex;
     justify-content: space-between;
@@ -205,6 +206,8 @@ project-branch:nth-child(even) .project-branch__container::after {
     font-weight: bold;
 }
 
+.project-branch__modal-icons-wrapper,
+.project-branch__modal-title-wrapper,
 .project-branch__title-wrapper {
     display: flex;
     /* flex-wrap: wrap; */
@@ -263,7 +266,7 @@ project-branch:nth-child(even) .project-branch__container::after {
     transform: scale(1.05);
 }
 
-.project-branch__body {
+.project-branch__content {
     padding: 12px 16px;
     display: flex;
     flex-direction: column;
@@ -295,7 +298,143 @@ project-branch:nth-child(even) .project-branch__container::after {
 }
 
 .project-branch__footer {
-    height: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    flex-grow: 1; 
+    min-height: 30px;
+    max-height: 50px;
+    
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 4px 8px;
+    
+    transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.project-branch__footer:hover {
+    background-color: var(--yellow-light);
+    color: var(--shadow-bg); 
+}
+
+.project-branch__details-text {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    /* Herda a cor do pai para que a transição de cor do texto funcione */
+    color: inherit; 
+}
+
+
+.project-branch__details-text {
+    font-size: var(--text-sm);
+    font-weight: 600;
+}
+
+/* ---------------------------
+    MODAL
+----------------------- */
+
+.project-branch__modal-overlay {
+    position: fixed;
+    inset: 0; /* Shortcut for top:0, right:0, bottom:0, left:0 */
+    background-color: var(--overlay-black); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 20;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.project-branch__modal-overlay.project-branch__modal-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.project-branch__modal-container {
+    height: 550px;
+    width: 600px;
+    background-color: var(--shadow-bg);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 1px solid var(--brand-yellow);
+
+    display: flex;
+    flex-direction: column; /* Organiza os elementos verticalmente em flexbox */
+    overflow: hidden; /* Evita que transborde do container principal */
+
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.project-branch__modal-overlay.project-branch__modal-visible .project-branch__modal-container {
+    transform: scale(1);
+}
+
+.project-branch__modal-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.project-branch__modal-slideshow {
     width: 100%;
-    background-color: rebeccapurple;
+    height: 300px;
+    flex-shrink: 0; /* Impede que o slideshow encolha */
+}
+
+/* Used the same project-branch__title-wrapper style too*/
+.project-branch__modal-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.project-branch__modal-text-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding-right: 5px;
+}
+
+.project-branch__modal-text {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ===========================
+   CUSTOM SCROLLBAR (MODAL)
+=========================== */
+
+/* Largura da barra de rolagem */
+.project-branch__modal-text-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Fundo/trilho da barra de rolagem */
+.project-branch__modal-text-box::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+/* O "retângulo" da rolagem (thumb) com bordas arredondadas e cor amarela */
+.project-branch__modal-text-box::-webkit-scrollbar-thumb {
+    background-color: var(--brand-yellow);
+    border-radius: 4px;
+    border: 2px solid transparent; /* Opcional: cria um respiro interno */
+}
+
+/* Efeito ao passar o mouse por cima da barra de rolagem */
+.project-branch__modal-text-box::-webkit-scrollbar-thumb:hover {
+    filter: brightness(1.2);
 }

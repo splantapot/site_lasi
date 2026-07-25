@@ -70,13 +70,17 @@ class SliderItem extends HTMLElement {
     }
 
     connectedCallback() {
-        const text = this.getAttribute('text') || 'Some text...';
+        const text = this.getAttribute('text') || '';
         const img = this.getAttribute('img') || undefined;
-        const title = this.getAttribute('title') || 'Hello World!';
+        const title = this.getAttribute('title') || '';
 
         // Opções para adicionar um link
         const link = this.getAttribute('link') || undefined;
         const url = this.getAttribute('url') || undefined;
+
+        if (!this.hasAttribute('shadow-off')) {
+            this.classList.add("slider__shadow");
+        }
         
         this.style.backgroundImage = img? `url("${img}")` : 'none';
 

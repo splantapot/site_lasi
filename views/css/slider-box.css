@@ -69,7 +69,7 @@ slider-item.slider__active {
     z-index: 2;
 }
 
-slider-item::before {
+slider-item.slider__shadow::before {
     content: "";
     position: absolute;
     top: 0;

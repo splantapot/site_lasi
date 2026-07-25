@@ -30,9 +30,13 @@ slider-box {
 .slider__dot{
     width: 30px;
     height: 4px;
-    background: var(--off-gray);
+    background: var(--off-dark-gray);
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.slider__shadow .slider__dot {
+    background: var(--off-gray);
 }
 
 .slider__dot.slider__active{

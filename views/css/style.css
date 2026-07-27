@@ -11,6 +11,7 @@
     /* --- TYPOGRAPHY SCALE (Base 16px nativa) --- */
     --text-xs:   0.75rem;   /* 12px - Legendas / Badges */
     --text-sm:   0.875rem;  /* 14px - Links de menu / Textos secundários */
+    --text-sm-base: 0.92rem;
     --text-base: 1rem;      /* 16px - Texto corrido / Parágrafos (Padrão) */
     --text-md:   1.25rem;   /* 20px - Subtítulos / Títulos menores */
     --text-lg:   1.5rem;    /* 24px - Títulos de seções */
@@ -109,5 +110,14 @@ main {
 }
 
 .section__slideshow-box {
-    height: calc(90vh - var(--navbar-max-size));
+    height: calc(91vh - var(--navbar-max-size));
+}
+
+.section__about {
+    height: auto;
+    margin: 10px;
+}
+
+.section__media {
+    height: 350px;
 }

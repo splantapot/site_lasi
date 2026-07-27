@@ -1,0 +1,162 @@
+/* ================================================================= *
+ * CSS para Card Box e Card Item (card-box.css) - Atualizado
+ * ================================================================= */
+
+/* Container Principal do Card Box */
+.card-box__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+/* Cabeçalho do Card Box */
+.card-box__header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.card-box__title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-michroma);
+}
+
+.card-box__subtitle {
+    font-size: var(--text-md);
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* --- DISPOSIÇÕES AUTOMÁTICAS (Layouts) --- */
+
+.card-box__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card-box__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: center;
+}
+
+.card-box__column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- Estilização do Card Item individual --- */
+card-item {
+    display: flex;
+}
+
+.card-item__container {
+    background: var(--shadow-bg);
+    border: 1px solid var(--off-gray);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+    /* Transição suave adicionando border-color */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-item__container.card-item__container--no-icon {
+    justify-content: center;
+}
+
+/* Efeito interativo elegante ao passar o mouse */
+.card-item__container:hover {
+    transform: translateY(-5px);
+    border-color: var(--blue-electric);
+    /* Sombra tridimensional aprimorada com um reflexo sutil em azul elétrico */
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 112, 255, 0.15);
+}
+
+/* Ícone */
+.card-item__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.card-item__img-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Ícone para Media */
+.card-item__icon--media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    background: transparent;
+    border-radius: 8px;
+    color: var(--blue-electric);
+    
+    /* Prepara as propriedades para uma transição suave */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer; /* Garante o ponteiro de clique */
+}
+
+.card-item__icon--media:hover {
+    background: var(--blue-electric);
+    color: #ffffff; /* Ou a cor de ícone que preferir ao destacar */
+    transform: translateY(-4px) scale(1.05); /* Eleva e aumenta ligeiramente */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 
+                0 0 12px var(--blue-electric); /* Glow suave com a sua cor */
+}
+
+.card-item__icon--media svg {
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.card-item__i-icon {
+    font-size: 1.5rem;
+    color: var(--brand-yellow);
+}
+
+/* Conteúdo de Texto do Card */
+.card-item__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-item__title {
+    font-size: var(--text-md);
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.card-item__text {
+    font-size: var(--text-sm-base);
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+}

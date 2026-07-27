@@ -14,12 +14,14 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/navigation-bar.css">
     <link rel="stylesheet" href="./css/slider-box.css">
+    <link rel="stylesheet" href="./css/card-box.css">
     
 </head>
 <body>
     <navigation-bar></navigation-bar>
     
     <main>
+        <!--  -->
         <section class="section__slideshow-box">
             <slider-box>
                 <slider-item
@@ -30,7 +32,8 @@
                     Suspendisse lacus felis, consectetur in arcu non, elementum elementum odio.
                     Nullam dictum risus nibh, et sodales nibh varius id.
                     Nam tempor, tortor et sagittis porta, orci purus cursus ligula, ut ullamcorper risus nulla in tellus. Morbi maximus massa suscipit, scelerisque nisl in, tincidunt elit."
-                    link-text="Leia mais"
+                    link-text="Conheça-nos"
+                    link-url="#about"
                     img="./assets/blank-slideshow.png"
                 ></slider-item>
                 <slider-item
@@ -46,13 +49,62 @@
             </slider-box>
         </section>
 
-        <!-- <section>
-            Mais coisas...
-        </section> -->
+        <section class="section__about" id="about">
+            <card-box title="Sobre Nós" subtitle="Conheça a essência e os objetivos do LASI">
+                <card-item
+                    icon="./assets/info/logo-lasi.png"
+                    title="Missão" 
+                    text="Desenvolver pesquisas de ponta e soluções tecnológicas inovadoras, promovendo a integração entre a academia e o ecossistema digital."
+                ></card-item>
+
+                <card-item 
+                    title="Visão" 
+                    text="Ser referência nacional e internacional em inovação tecnológica, reconhecido pela excelência em projetos de impacto social e científico."
+                ></card-item>
+
+                <card-item 
+                    title="Valores" 
+                    text="Ética na pesquisa, colaboração interdisciplinar, transparência nos resultados e compromisso contínuo com a evolução tecnológica."
+                ></card-item>
+
+                <card-item 
+                    title="Inovação" 
+                    text="Fomentar a criação de metodologias disruptivas e ferramentas avançadas que antecipem as demandas do mercado e da sociedade."
+                ></card-item>
+
+                <card-item 
+                    title="Impacto" 
+                    text="Transformar conhecimento acadêmico em soluções práticas que gerem valor real, desenvolvimento sustentável e melhoria na qualidade de vida."
+                ></card-item>
+            </card-box>
+        </section>
+
+        <section class="section__media" id="media">
+            <card-box title="Acompanhe nossas redes sociais" row>
+                <card-item
+                    media="instagram"
+                    media-url="https://instagram.com/lasi.ufpi"
+                ></card-item>
+
+                <card-item
+                    media="github"
+                    media-url="https://github.com/LASI-UFPI"
+                ></card-item>
+
+                <card-item
+                    media="youtube"
+                    media-url="https://youtube.com/@lasi-4908"
+                ></card-item>
+            </card-box>
+        </section>
+
+        
+
     </main>
 
     <script src="./js/global.js"></script>
     <script src="./js/navigation-bar.js"></script>
     <script src="./js/slider-box.js"></script>
+    <script src="./js/card-box.js"></script>
 </body>
 </html>

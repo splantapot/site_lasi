@@ -35,12 +35,20 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/demo', (req, res) => {
+    res.render('index-demo');
+});
+
 app.get('/projetos', (req, res) => {
     res.render('projetos');
 });
 
 app.get('/membros', (req, res) => {
     res.render('membros');
+});
+
+app.get('/seletivos', (req, res) => {
+    res.render('seletivos');
 });
 
 app.listen(APP_PORT);

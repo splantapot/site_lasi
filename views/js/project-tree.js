@@ -129,6 +129,7 @@ class ProjectBranch extends HTMLElement {
 
         if (this.presentation_images.length > 0) {
             const slideshow = document.createElement('slider-box');
+            slideshow.setAttribute('interval', 5000);
             this.presentation_images.forEach((img) => {
                 const sliderItem = document.createElement('slider-item');
                 sliderItem.setAttribute('img', img);

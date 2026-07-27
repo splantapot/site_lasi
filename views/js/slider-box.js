@@ -7,11 +7,12 @@ class SliderBox extends HTMLElement {
         this.timer = null;
         this.active = 0;
         this.qnt_slides = 1;
+        this.interval = 6000;
     }
 
     resetTimer() {
         clearInterval(this.timer);
-        this.timer = setInterval(() => this.nextActive(), 6000);
+        this.timer = setInterval(() => this.nextActive(), this.interval);
     }
 
     nextActive() {
@@ -42,6 +43,10 @@ class SliderBox extends HTMLElement {
     connectedCallback() {
         const children = Array.from(this.children); // Obtém a lista dos slide-itens
         this.qnt_slides = children.length? children.length: 1;
+
+        this.interval = this.getAttribute('interval') || 6000; /* Auto scroll time ms */
+        if (!this.interval || this.interval == NaN) this.interval = 6000;
+        
 
         this.innerHTML = `
             <div class="slider__container">

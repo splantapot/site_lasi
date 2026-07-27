@@ -81,8 +81,8 @@ class MemberBoard extends HTMLElement {
     }
 
     getBackgroundImg(fixed = undefined) {
-        if (fixed === 0 || fixed === 1) return `./assets/member/default/background-member-${fixed}.jpg`;
-        return `./assets/member/default/background-member-${this.isDay()}.jpg`;
+        if (fixed === 0 || fixed === 1) return `./assets/membros/default/background-member-${fixed}.jpg`;
+        return `./assets/membros/default/background-member-${this.isDay()}.jpg`;
     }
 
     isDay() {
@@ -102,7 +102,7 @@ class MemberCard extends HTMLElement {
 
     getBlankMemberImg() {
         const num = Math.floor(Math.random() * this.QNT_DEFAULT_IMG) + 1;  // 3 = Qnt. of default member images.
-        return `./assets/member/default/blank-member-${num}.jpg`;
+        return `./assets/membros/default/blank-member-${num}.jpg`;
     }
 
     renderShareIconsIn(element) {

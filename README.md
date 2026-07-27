@@ -53,3 +53,11 @@ Tabela 2: Classes e funções
 Classe          | Tipo  | Função
 l-main          | 01    | estiliza a organização da tag main
 nav-bar         | 02    | estiliza a navbar do site
+
+RESPONSIVIDADE
+
+Mobile (celulares): até 600px de largura 
+
+Tablet: entre 601px e 1024px de largura 
+
+Desktop (computadores): acima de 1025px de largura 

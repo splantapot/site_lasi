@@ -61,3 +61,7 @@ Mobile (celulares): até 600px de largura
 Tablet: entre 601px e 1024px de largura 
 
 Desktop (computadores): acima de 1025px de largura 
+
+ADICIONAR
+
+Cards devem possuir inner HTML customizável

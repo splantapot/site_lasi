@@ -96,7 +96,7 @@ card-item {
     height: 48px;
     background: transparent;
     border-radius: 8px;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .card-item__img-icon {

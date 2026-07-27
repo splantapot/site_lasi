@@ -30,39 +30,59 @@ class CardBox extends HTMLElement {
 }
 
 class CardItem extends HTMLElement {
+    constructor() {
+        super();
+        this.SHAPES = {
+            SQUARE: '--square',
+            RECT: '--rect',
+            CIRCLE: '--circle'
+        }
+    }
+
+    getShapeAttribute() {
+        if (this.hasAttribute('rect')) return this.SHAPES.RECT;
+        else if (this.hasAttribute('circle')) return this.SHAPES.CIRCLE;
+        else return this.SHAPES.SQUARE;
+    }
+
     connectedCallback() {
-        const icon = this.getAttribute('icon') || '';
+        const img = this.getAttribute('img') || '';
         const title = this.getAttribute('title') || '';
         const text = this.getAttribute('text') || '';
 
-        const media = this.getAttribute('media') || undefined;
-        const media_url = this.getAttribute('media-url') || undefined;
+        const logo = this.getAttribute('logo') || this.getAttribute('media') || undefined;
+        const logo_url = this.getAttribute('logo-url') || this.getAttribute('media-url') || undefined;
 
-        // Verifica se o ícone é uma imagem (caminho relativo, absoluto ou URL)
-        const isImage = icon.includes('.') || icon.includes('/') || icon.includes('http');
-        
-        let iconContent = '';
-        if (icon) {
-            if (isImage) {
-                iconContent = `<img src="${icon}" alt="${title}" class="card-item__img-icon" />`;
-            } else {
-                iconContent = `<i class="${icon} card-item__i-icon"></i>`;
-            }
+        const shape = this.getShapeAttribute();
+
+        let imgContent = '';
+        if (img) {
+            imgContent = `<img src="${img}" alt="${title}" class="card-item__img" />`;
         }
 
-        // Media or normal card
-        if (media && media_url && MEDIA_ICONS[media] /* Exists icon for this media */) {
+        // Media (only logo) Card or Common Card
+        if (logo && logo_url) {
+            /* Exists icon for this media? Is media = YES. */
+            const isMedia = MEDIA_ICONS[logo];
+            const TAG = isMedia? '--media' : shape;
+            const LOGO_OBJ = isMedia?
+                MEDIA_ICONS[logo] :
+                `<img src="${logo}" class="card-item__img" alt="${title? title : ''}">`
+
+            const imgTitle = isMedia? capitalize(logo) : capitalize(title) || '';
+            
+            // Finally render
             this.innerHTML = `
-                <div class="card-item__container--media}">
-                    <a href="${media_url}" target="_blank" rel="noopener noreferrer" title="${capitalize(media)}">
-                        <div class="card-item__icon--media">${MEDIA_ICONS[media]}</div>
+                <div class="card-item__container${TAG}">
+                    <a href="${logo_url}" target="_blank" rel="noopener noreferrer" title="${imgTitle}">
+                        <div class="card-item__img${TAG}">${LOGO_OBJ}</div>
                     </a>
                 </div>
             `;
         } else {
             this.innerHTML = `
-                <div class="card-item__container ${icon ? '' : 'card-item__container--no-icon'}">
-                    ${icon ? `<div class="card-item__icon">${iconContent}</div>` : ''}
+                <div class="card-item__container ${img ? '' : 'card-item__container--no-img'}">
+                    ${img ? `<div class="card-item__img-box">${imgContent}</div>` : ''}
                     <div class="card-item__content">
                         ${title ? `<h4 class="card-item__title">${title}</h4>` : ''}
                         ${text ? `<p class="card-item__text">${text}</p>` : ''}

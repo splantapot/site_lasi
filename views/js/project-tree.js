@@ -69,9 +69,9 @@ class ProjectBranch extends HTMLElement {
     }
 
     connectedCallback() {
-        this.title = this.getAttribute('title') || 'Título do Projeto';
-        this.date = this.getAttribute('date') || 'DD/MM/AAAA';
-        this.text = this.getAttribute('text') || 'Algum Texto Qualquer...';
+        this.title = this.getAttribute('title') || '';
+        this.date = this.getAttribute('date') || '';
+        this.text = this.getAttribute('text') || '';
 
         this.thumbnail = this.getAttribute('thumbnail') || undefined; // './assets/blank-thumbnail.png';
 

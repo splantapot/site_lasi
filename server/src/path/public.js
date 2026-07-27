@@ -1,15 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 
-import { ASSETS_PATH, CSS_PATH, JS_PATH, PUBLIC_PATH } from './../../config.js';
+import { ASSETS_PATH, CSS_PATH, JS_PATH, BUILD_PATH } from './../../config.js';
 
 /**
  * Deletes the "public" directory and all its contents.
  */
 function delete_public() {
     console.log('>> Deleting "public" folder...');
-    if (fs.existsSync(PUBLIC_PATH)) {
-        fs.rmSync(PUBLIC_PATH, { recursive: true });
+    if (fs.existsSync(BUILD_PATH)) {
+        fs.rmSync(BUILD_PATH, { recursive: true });
         console.log('Done!');
     }
 }
@@ -45,9 +45,9 @@ function copy_folder(src_path, out_path) {
  */
 function copy_view_to_public() {
     console.log('>> Copying "views" folder...');
-    copy_folder(ASSETS_PATH, path.join(PUBLIC_PATH, 'assets'));
-    copy_folder(CSS_PATH, path.join(PUBLIC_PATH, 'css'));
-    copy_folder(JS_PATH, path.join(PUBLIC_PATH, 'js'));
+    copy_folder(ASSETS_PATH, path.join(BUILD_PATH, 'assets'));
+    copy_folder(CSS_PATH, path.join(BUILD_PATH, 'css'));
+    copy_folder(JS_PATH, path.join(BUILD_PATH, 'js'));
     console.log('Done!');
 }
 
@@ -58,7 +58,7 @@ function copy_view_to_public() {
  * @returns {string} The full path for the output file.
  */
 function get_html_path(filename) {
-    const full_path = path.join(PUBLIC_PATH, filename);                    // Directory + filename
+    const full_path = path.join(BUILD_PATH, filename);                    // Directory + filename
     if (!fs.existsSync(path.dirname(full_path))) {
         fs.mkdirSync(path.dirname(full_path), { recursive: true });
     }

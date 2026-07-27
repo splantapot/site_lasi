@@ -7,7 +7,7 @@ const __dirname = import.meta.dirname;
 // ========================================================
 // Path Settings
 // ========================================================
-const PUBLIC_PATH = path.join(__dirname, '..', 'public');
+const BUILD_PATH = path.join(__dirname, '..', 'build');
 const VIEWS_PATH = path.join(__dirname, '..', 'views');
 const TMP_PATH = path.join(VIEWS_PATH, 'templates')
 const ASSETS_PATH = path.join(VIEWS_PATH, 'assets')
@@ -15,7 +15,7 @@ const CSS_PATH = path.join(VIEWS_PATH, 'css');
 const JS_PATH = path.join(VIEWS_PATH, 'js');
 
 // exports
-export { PUBLIC_PATH, VIEWS_PATH, TMP_PATH, ASSETS_PATH, CSS_PATH, JS_PATH};
+export { BUILD_PATH, VIEWS_PATH, TMP_PATH, ASSETS_PATH, CSS_PATH, JS_PATH};
 
 // ========================================================
 // WEB APP Settings

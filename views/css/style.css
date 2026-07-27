@@ -80,6 +80,7 @@
 html {
     scroll-behavior: smooth;
     background-color: var(--black);
+    height: 100%;
 }
 
 body {
@@ -101,10 +102,15 @@ body {
     
     overflow-x: hidden;
     isolation: isolate;
+
+    display: flex;
+    flex-direction: column;
 }
 
 main {
+    flex: 1;
     min-height: 0;
+    height: auto;
     position: relative; 
     background: transparent !important; /* Torna "main" trnsparente. */
 }

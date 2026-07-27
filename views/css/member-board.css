@@ -4,6 +4,8 @@ member-board {
     width: 100%;
     min-height: calc(100vh - var(--navbar-max-size));
     overflow: hidden;
+
+    padding-bottom: 40px;
 }
 
 .member-board__bg {

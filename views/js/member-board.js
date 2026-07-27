@@ -3,6 +3,7 @@ class MemberBoard extends HTMLElement {
         super();
         this.areas = new Map();
         this.areas_text = [];
+        this.SCROLL_RATIO = 0.5;
     }
 
     getAreasFrom(children = []) {
@@ -74,8 +75,8 @@ class MemberBoard extends HTMLElement {
         `;
         window.addEventListener('scroll', () => {
             const scrollPosition = window.pageYOffset;
-            // Speed: 40% of scroll = 0.4
-            bg.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+            // Speed: SCROLL_RATIO of scroll
+            bg.style.transform = `translateY(${scrollPosition * this.SCROLL_RATIO}px)`;
         });
     }
 

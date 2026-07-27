@@ -3,10 +3,11 @@ STYLES to PROJECT TREE
 =========================== */
 
 project-tree {
-    position: absolute;
+    position: relative;
     display: block;
     z-index: 4;
     width: 100%;
+    margin-bottom: 30px;
 }
 
 /* Header */

@@ -51,6 +51,18 @@ app.get('/seletivos', (req, res) => {
     res.render('seletivos');
 });
 
+app.get('/noticias', (req, res) => {
+    res.render('noticias');
+});
+
+app.get('/acervo', (req, res) => {
+    res.render('acervo');
+});
+
+app.get('/quizes', (req, res) => {
+    res.render('quizes');
+});
+
 app.listen(APP_PORT);
 console.log('Development app running! Available in:');
 console.log(`http://localhost:${APP_PORT}/`);

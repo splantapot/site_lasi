@@ -1,0 +1,143 @@
+.section__slideshow-box {
+    height: calc(91vh - var(--navbar-max-size));
+}
+
+.section__about {
+    height: auto;
+    margin: 10px;
+}
+
+.section__media,
+.section__sponsors {
+    height: 220px;
+}
+
+/* More detailed */
+.section__infos {
+    height: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.section__infos-title {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-michroma);
+}
+
+.section__grid-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    gap: 10px;
+    padding: 0 10px;
+
+    --br: 20px /* border radius to grid */
+}
+
+.section__grid-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: var(--br);
+}
+
+.section__grid-item::after {
+    content: ""; /* Obrigatório para o pseudo-elemento existir */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.58); 
+    pointer-events: none;
+    z-index: 1;
+}
+
+.section__grid-item.A {
+    background: url('../assets/info/box-projetos.png');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-bottom-right-radius: 0;
+}
+
+.section__grid-item.B {
+    background: url('../assets/info/box-quiz.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-bottom-left-radius: 0;
+}
+
+.section__grid-item.C {
+    background: url('../assets/info/box-noticia.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-top-right-radius: 0;
+}
+
+.section__grid-item.D {
+    background: url('../assets/info/box-acervo.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-left-radius: 0;
+}
+
+.section__grid-item a {
+    /* Based in 89 from https://getcssscan.com/css-buttons-examples */
+    --b: 2px;   /* border thickness */
+    --s: .3em; /* size of the corner */
+    --color: var(--neutral-light);
+
+    /* Font style */
+    font-size: calc(var(--text-base) + 0.05rem);
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    z-index: 2;
+
+    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    color: var(--color);
+
+    --_p: var(--s);
+    background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .2s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .6em;
+
+    border: 0;
+
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.section__grid-item a:hover,
+.section__grid-item a:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+.section__grid-item a:active {
+  background: var(--color);
+  color: var(--color);
+}

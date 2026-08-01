@@ -114,16 +114,3 @@ main {
     position: relative; 
     background: transparent !important; /* Torna "main" trnsparente. */
 }
-
-.section__slideshow-box {
-    height: calc(91vh - var(--navbar-max-size));
-}
-
-.section__about {
-    height: auto;
-    margin: 10px;
-}
-
-.section__media {
-    height: 300px;
-}

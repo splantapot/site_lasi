@@ -3,7 +3,7 @@ class MemberBoard extends HTMLElement {
         super();
         this.areas = new Map();
         this.areas_text = [];
-        this.SCROLL_RATIO = 0.5;
+        this.SCROLL_RATIO = 0.4;
     }
 
     getAreasFrom(children = []) {

@@ -1,4 +1,6 @@
 class NavigationBar extends HTMLElement {
+    // todo: easter egg
+
     connectedCallback() {
         this.innerHTML = `
             <header class="nav-bar">
@@ -12,15 +14,21 @@ class NavigationBar extends HTMLElement {
                     </div>
 
                     <nav class="nav-bar__links">
-                        <a class="nav-bar__link" href="/" >Início</a>
+                        <a class="nav-bar__link" href="/">Início</a>
                         <a class="nav-bar__link" href="/projetos">Projetos</a>
                         <a class="nav-bar__link" href="/membros">Membros</a>
-                        <a class="nav-bar__link" href="/seletivos">Seletivos</a>
-                        <a class="nav-bar__link" href="/">Notícias</a>
+                        <a class="nav-bar__link" href="/seletivos">Algo</a>
+                        <a class="nav-bar__link" href="/noticias">Notícias</a>
+                        <a class="nav-bar__link" href="/acervo">Acervo</a>
                     </nav>
                 </div>
             </header>
         `;
+
+        const path = window.location.pathname;
+        this.querySelectorAll('.nav-bar__link').forEach((element) => {
+            if (element.getAttribute('href') == path) element.classList.add('nav-bar__active');
+        });
     }
 }
 

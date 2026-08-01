@@ -86,3 +86,7 @@ navigation-bar {
 .nav-bar__link {
     color: var(--text-muted-hvr);
 }
+
+a.nav-bar__active {
+    text-decoration: underline;
+}

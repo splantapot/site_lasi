@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server/run.js",
     "dev": "node server/dev.js",
-    "devb": "node server/dev.js build"
+    "devb": "node server/dev.js build",
+
+    "test": "node server/test.js"
   },
   "author": "Splantapot",
   "license": "ISC",
@@ -17,6 +19,7 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "@types/google-apps-script": "^2.0.8"
+    "@types/google-apps-script": "^2.0.8",
+    "esbuild": "0.28.1"
   }
 }

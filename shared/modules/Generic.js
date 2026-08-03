@@ -6,11 +6,24 @@
 // ];
 
 class Generic {
-    constructor(object = {}, fields = [], splitFields = []) {
+    constructor(
+        object = {}, 
+        fields = [], 
+        config = {split: undefined, bool: undefined}
+        ) {
+
+        const splitFields = config['split'];
+        const boolFields = config['bool'];
         fields.forEach((field) => {
-            const needSplit = (splitFields && Array.isArray(splitFields) && splitFields.includes(field));
-            const value = object[field];
-            if (value) this[field] = (needSplit)? this.splitData(value) : value;
+            const isSplit = (splitFields && Array.isArray(splitFields) && splitFields.includes(field));
+            const isBool = (boolFields && Array.isArray(boolFields) && boolFields.includes(field));
+            
+            let value = object[field];
+            if (value) {
+                if (isSplit) value = this.splitData(value);
+                if (isBool) value = this.validateBool(value);
+                this[field] = value;
+            }
         });
     }
 
@@ -34,8 +47,20 @@ class Generic {
         return rows.map(row => this.from_json(row));
     }
 
+    // Separates a data string in ',' and ';'
     splitData(dataStr = '') {
         return dataStr.replaceAll(';',',').split(',').map((v) => v.trim());
+    }
+
+    // Validates a bool value
+    validateBool(value = '') {
+        return (
+            value.toString().toLowerCase().trim() === 'sim'  || 
+            value.toString().toLowerCase().trim() === '1'    ||
+            value.toString().toLowerCase().trim() === 'true' ||
+            value === true  ||
+            value === 1     
+        );
     }
 }
 

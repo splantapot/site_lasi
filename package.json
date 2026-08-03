@@ -7,7 +7,6 @@
     "start": "node server/run.js",
     "dev": "node server/dev.js",
     "devb": "node server/dev.js build",
-
     "test": "node server/test.js"
   },
   "author": "Splantapot",
@@ -15,11 +14,10 @@
   "type": "module",
   "dependencies": {
     "axios": "^1.16.0",
+    "dotenv": "^17.4.2",
     "ejs": "^5.0.2",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "googleapis": "^174.0.0"
   },
-  "devDependencies": {
-    "@types/google-apps-script": "^2.0.8",
-    "esbuild": "0.28.1"
-  }
+  "devDependencies": {}
 }

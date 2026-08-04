@@ -4,9 +4,15 @@
   "description": "Development of the LASI's site using Netlify to build a static website, while the AppScript is used to get the data from Google sheets.",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/run.js",
+    "start": "node server/build.js",
+    "build": "node server/build.js",
+
     "dev": "node server/dev.js",
-    "devb": "node server/dev.js build",
+    "dev sheet": "node server/dev.js sheet",
+    "dev image": "node server/dev.js image",
+    "dev file": "node server/dev.js file",
+    "dev all": "node server/dev.js all",
+    
     "test": "node server/test.js"
   },
   "author": "Splantapot",

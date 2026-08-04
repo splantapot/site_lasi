@@ -5,7 +5,7 @@
 //     'linkedin','linkedin','telegram','whatsapp','youtube'
 // ];
 
-class Generic {
+class BaseModel {
     constructor(
         object = {}, 
         fields = [], 
@@ -64,4 +64,4 @@ class Generic {
     }
 }
 
-export default Generic;
+export default BaseModel;

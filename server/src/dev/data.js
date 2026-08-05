@@ -1,9 +1,11 @@
 import Apresentacao from "../models/Apresentacao.js";
+import Patrocinador from "../models/Patrocinador.js";
 
 // module with fake dev app data
 
 const APP_DATA = {};
 
+// Index -> Apresentacoes
 APP_DATA[Apresentacao.LIST_NAME] = [
     new Apresentacao({
         titulo: "First",
@@ -24,6 +26,16 @@ APP_DATA[Apresentacao.LIST_NAME] = [
     new Apresentacao({
         titulo: "Fourth"
     }).toJson()
+];
+
+// Index -> Patrocinadores
+APP_DATA[Patrocinador.LIST_NAME] = [
+    new Patrocinador({
+        nome: "Tornado Fibra",
+        logo: "./assets/patrocinadores/tornado-fibra.png",
+        link: "https://www.tornadonet.com.br/",
+        formato: "Retangular"
+    })
 ];
 
 export default APP_DATA;

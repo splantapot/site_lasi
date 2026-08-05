@@ -108,17 +108,20 @@
             </card-box>
         </section>
 
-        <section class="section__sponsors">
-            <card-box title="Patrocinadores" row>
+        <% if (typeof patrocinadores !== 'undefined' && patrocinadores && patrocinadores.length > 0) { %>
+            <section class="section__sponsors">
+                <card-box title="Patrocinadores" row>
+                    <% patrocinadores.forEach(function(patrocinador) { %>
+                        <card-item
+                        <% if (patrocinador.logo) { %> logo="<%= patrocinador.logo %>" <% } %>
+                        <% if (patrocinador.link) { %> logo-url="<%= patrocinador.link %>" <% } %>
+                        <% if (patrocinador.formato) { %> <%= patrocinador.formato %> <% } %>
+                        ></card-item>
+                    <% }); %>
+                </card-box>
+            </section>
+        <% } %>
 
-                <card-item
-                    logo="./assets/patrocinadores/tornado-fibra.png"
-                    logo-url="https://www.tornadonet.com.br/"
-                    rect
-                ></card-item>
-
-            </card-box>
-        </section>
     </main>
 
     <footer-bar></footer-bar>

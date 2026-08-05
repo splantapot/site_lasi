@@ -24,32 +24,21 @@
     <navigation-bar></navigation-bar>
     
     <main>
-        <section class="section__slideshow-box">
-            <slider-box>
-                <slider-item
-                    title="First"
-                    text="
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Maecenas et tellus sed ipsum aliquet suscipit a at mi.
-                    Suspendisse lacus felis, consectetur in arcu non, elementum elementum odio.
-                    Nullam dictum risus nibh, et sodales nibh varius id.
-                    Nam tempor, tortor et sagittis porta, orci purus cursus ligula, ut ullamcorper risus nulla in tellus. Morbi maximus massa suscipit, scelerisque nisl in, tincidunt elit."
-                    link-text="Conheça-nos"
-                    link-url="#about"
-                    img="./assets/blank-slideshow.png"
-                ></slider-item>
-                <slider-item
-                    title="Second"
-                    img="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200"
-                ></slider-item>
-                <slider-item
-                    title="Third"
-                    link-text="Leia mais"
-                    link-url="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200"
-                ></slider-item>
-                <slider-item></slider-item>
-            </slider-box>
-        </section>
+        <% if (typeof apresentacoes !== 'undefined' && apresentacoes && apresentacoes.length > 0) { %>
+            <section class="section__slideshow-box">
+                <slider-box>
+                    <% apresentacoes.forEach(function(apresentacao) { %>
+                        <slider-item
+                            <% if (apresentacao.titulo) { %> title="<%= apresentacao.titulo %>" <% } %>
+                            <% if (apresentacao.texto) { %> text="<%= apresentacao.texto %>" <% } %>
+                            <% if (apresentacao.link_texto) { %> link-text="<%= apresentacao.link_texto %>" <% } %>
+                            <% if (apresentacao.link_url) { %> link-url="<%= apresentacao.link_url %>" <% } %>
+                            <% if (apresentacao.foto) { %> img="<%= apresentacao.foto %>" <% } %>
+                        ></slider-item>
+                    <% }); %>
+                </slider-box>
+            </section>
+        <% } %>
 
         <section class="section__about" id="about">
             <card-box title="Sobre Nós" subtitle="Conheça a essência e os objetivos do LASI">
@@ -86,7 +75,7 @@
             <h2 class="section__infos-title">Um pouco mais...</h2>
             <div class="section__grid-container">
                 <div class="section__grid-item A">
-                    <a href="/projetos" class="button-89">Conheça nossos projetos</a>
+                    <a href="/projetos">Conheça nossos projetos</a>
                 </div>
                 <div class="section__grid-item B">
                     <a href="/quizes">Que tal um quiz? Confira!</a>

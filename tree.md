@@ -18,13 +18,13 @@ Todo modelo se baseia em "BaseModel"
 
 __index
 *Apresentacao        ['titulo', 'texto', 'link_texto', 'link_url', 'foto']
- Patrocinador        ['nome', 'logo', 'link', 'formato da logo':[rect, circle, square]]
+*Patrocinador        ['nome', 'logo', 'link', 'formato da logo':[rect, circle, square]]
 
 __projetos
-*Projeto             ['titulo', 'data', 'texto', 'miniatura', 'media', 'fotos']
+*Projeto             ['titulo', 'data', 'texto', 'miniatura', 'media', 'fotos'] + [planilha_das_medias]
 
 __membros   
-*Membro              ['nome', 'data_nascimento', 'foto', 'cargo', 'departamento', 'destacar', 'media']
+*Membro              ['nome', 'data_nascimento', 'foto', 'cargo', 'departamento', 'destacar', 'media'] + [medias]
 
 __seletivos
  Seletivo            ['titulo', 'data_inicio', 'data_fim', 'link_edital', 'link_resultado']

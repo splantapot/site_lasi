@@ -1,11 +1,15 @@
 // FILE TO EXPORT DEFAULT SETTINGS
 
+// USES DOTENV
+import dotenv from "dotenv";
+dotenv.config();
+
 // imports
 import path from 'path';
 const __dirname = import.meta.dirname;
 
 // ========================================================
-// Path Settings
+// BUILD CONSTANTS
 // ========================================================
 const BUILD_PATH = path.join(__dirname, '..', 'build');
 
@@ -20,10 +24,10 @@ const JS_PATH = path.join(VIEWS_PATH, 'js');
 export { BUILD_PATH, VIEWS_PATH, TMP_PATH, ASSETS_PATH, NEWS_PATH, CSS_PATH, JS_PATH};
 
 // ========================================================
-// WEB APP Settings
+// WEB CONSTANTS
 // ========================================================
-process.loadEnvFile('./.env');
-const WEB_APP_URL = process.env.WEB_APP_URL; // I NEED TO REPLACE BY NETLIFY ENV VAR!
-const WEB_APP_TIMEOUT = 10000;  // Download data in 10 seconds, otherwise throw error
 
-export { WEB_APP_URL, WEB_APP_TIMEOUT };
+const WEB_REQUEST_TIMEOUT = 60000;      // Download data for up to 60 seconds, otherwise throw an error.
+const WEB_REQUEST_LIMIT = 200;          // Max quantity of requests per minute
+
+export { WEB_REQUEST_TIMEOUT, WEB_REQUEST_LIMIT };

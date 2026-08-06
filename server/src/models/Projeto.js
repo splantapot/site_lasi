@@ -4,11 +4,11 @@ class Projeto extends BaseModel {
     static OBJ_NAME = 'projeto';
     static LIST_NAME = 'projetos';
     static FIELDS = [
-        'titulo', 'data', 'texto', 'media', 'miniatura', 'fotos'
-    ]
+        'titulo', 'data', 'texto', 'miniatura', 'media', 'fotos'
+    ];
 
     constructor(object = {}) {
-        super(object, PROJETO_FIELDS, {split: ['media', 'fotos']});
+        super(object, Projeto.FIELDS);
     }
 }
 

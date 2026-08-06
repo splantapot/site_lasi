@@ -1,5 +1,6 @@
 import Apresentacao from "../models/Apresentacao.js";
 import Patrocinador from "../models/Patrocinador.js";
+import Projeto from "../models/Projeto.js";
 
 // module with fake dev app data
 
@@ -35,7 +36,32 @@ APP_DATA[Patrocinador.LIST_NAME] = [
         logo: "./assets/patrocinadores/tornado-fibra.png",
         link: "https://www.tornadonet.com.br/",
         formato: "Retangular"
+    }).toJson()
+];
+
+// Projetos -> Projetos
+APP_DATA[Projeto.LIST_NAME] = [
+    new Projeto({
+        titulo: 'Projeto A',
+        data: "17 MAR 2026",
+        media: 'https://mail.google.com/, https://instagram.com/lasi.ufpi,https://github.com/LASI-UFPI,https://youtube.com/@lasi-4908',
+        texto: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Maecenas et tellus sed ipsum aliquet suscipit a at mi.
+            Suspendisse lacus felis, consectetur in arcu non, elementum elementum odio.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nullam dictum risus nibh, et sodales nibh varius id.
+            Nam tempor, tortor et sagittis porta, orci purus cursus ligula, ut ullamcorper risus nulla in tellus. Morbi maximus massa suscipit, scelerisque nisl in, tincidunt elit.`
+    }).toJson(),
+    new Projeto({
+        titulo: 'Projeto B',
+        data: "14 MAI 2026"
     })
 ];
+
+console.log(APP_DATA.projetos)
 
 export default APP_DATA;

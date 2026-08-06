@@ -1,11 +1,14 @@
-// Don't forget to update in "views/js/global.js" too.
-// REMOVE IT. IT'S NOT NEEDED ANYMORE
-// const MEDIA_FIELDS = [
-//     'email','facebook','github','instagram','link',
-//     'linkedin','linkedin','telegram','whatsapp','youtube'
-// ];
+import fetchFromSheets from "../fetch/fetchFromSheets.js";
+
+import formatMediaSheet from "../util/sheet.js";
+export { formatMediaSheet };
 
 class BaseModel {
+    confirmConfig(configFields, entityField) {
+        // Checks if a field was passed as a field with custom configs, like 'split' or 'bool'.
+        return (configFields && Array.isArray(configFields) && configFields.includes(entityField));
+    }
+
     constructor(
         object = {}, 
         fields = [], 
@@ -14,10 +17,12 @@ class BaseModel {
 
         const splitFields = config['split'];
         const boolFields = config['bool'];
+        // The order of 'sheet' fields is important. Defines the sequence of collected data from table.
+        
         fields.forEach((field) => {
-            const isSplit = (splitFields && Array.isArray(splitFields) && splitFields.includes(field));
-            const isBool = (boolFields && Array.isArray(boolFields) && boolFields.includes(field));
-            
+            const isSplit = this.confirmConfig(splitFields, field);
+            const isBool = this.confirmConfig(boolFields, field);
+
             let value = object[field];
             if (value) {
                 if (isSplit) value = this.splitData(value);
@@ -31,21 +36,24 @@ class BaseModel {
     toJson() {
         return { ...this };
     }
-    
-    // Creates an instance from a json object
-    static fromJson(object = {}) {
-        return Object.assign(new this(), object);    
+
+    static fromArray(array, fields, config = {split: undefined, bool: undefined}) {
+        const newObj = {}
+        fields.forEach((field, i) => {
+            const value = i < array.length? array[i] : undefined;
+            if (value) newObj[field] = value;
+        });
+        return new this(newObj, fields, config);
     }
 
-    // Returns an array of the instance's values
-    toArray(fields = []) {
-        return fields.filter((field) => this[field]);
+    // Get the data from the google sheets
+    static async fromSheet(sheetID = "", sheets = []) {
+        return await fetchFromSheets(sheetID, sheets);
     }
 
-    // Converts an array of database rows/objects into class instances
-    static fromRows(rows = []) {
-        return rows.map(row => this.from_json(row));
-    }
+    //  ========================
+    //  Validation
+    //  =======================
 
     // Separates a data string in ',' and ';'
     splitData(dataStr = '') {
@@ -62,6 +70,12 @@ class BaseModel {
             value === 1     
         );
     }
+
+    //  ========================
+    //  Util
+    //  ========================
+
+
 }
 
 export default BaseModel;

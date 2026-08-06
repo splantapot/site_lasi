@@ -53,6 +53,7 @@ app.use('/js', express.static(JS_PATH));
 // ========================================================
 
 app.get('/', (req, res) => {
+    console.log('hi')
     res.render('index', BUILD_DATA);
 });
 
